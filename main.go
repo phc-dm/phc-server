@@ -11,6 +11,11 @@ func serveHome(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 
+	// Serve assets files
+	fs := http.FileServer(http.Dir("./assets"))
+	http.Handle("/assets/", http.StripPrefix("/assets/", fs))
+
+	// Serve homepage
 	http.HandleFunc("/", serveHome)
 
 	log.Println("Listening on :8000...")
