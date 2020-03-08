@@ -1,0 +1,56 @@
+{{define "base"}}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{template "title" .}}</title>
+
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+
+<body>
+    <nav>
+        <!-- Site -->
+        <div class="nav-item">
+            <a href="/">Poisson</a>
+        </div>
+        <div class="nav-item">
+            <a href="/utenti">Utenti</a>
+        </div>
+        <div class="nav-item">
+            <a href="/notizie">Notizie</a>
+        </div>
+        <div class="nav-item">
+            <a href="/guide">Guide</a>
+        </div>
+        <div class="nav-item">
+            <a href="/git">Git</a>
+        </div>
+        <div class="nav-item">
+            Forum
+        </div>
+        <!-- Spacing -->
+        <div class="hfill"></div>
+        <!-- User -->
+        {{if .User}}
+        <div class="nav-item">
+            <a href="/logout">Logout</a>
+        </div>
+        {{else}}
+        <div class="nav-item">
+            <a href="/login">Login</a>
+        </div>
+        {{end}}
+    </nav>
+
+    {{template "body" .}}
+    
+    <footer>
+        macchinisti@poisson.phc.dm.unipi.it
+    </footer>
+</body>
+
+</html>
+{{end}}

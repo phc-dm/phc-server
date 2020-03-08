@@ -1,84 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
+{{template "base" .}}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHC</title>
+{{define "title"}}Poisson{{end}}
 
-    <link rel="stylesheet" href="/assets/style.css">
-</head>
+{{define "body"}}
+<h1>Poisson</h1>
 
-<body>
-    <nav>
-        <!-- Site -->
-        <div class="nav-item">
-            <a href="/">Poisson</a>
+<h2>Macchinisti</h2>
+
+<ul>
+    <li>Persona 1 &mdash; <a href="poisson.phc.dm.unipi.it/~persona">poisson.phc.dm.unipi.it/~persona</a></li>
+    <li>Persona 1 &mdash; <a href="poisson.phc.dm.unipi.it/~persona">poisson.phc.dm.unipi.it/~persona</a></li>
+    <li>Persona 1 &mdash; <a href="poisson.phc.dm.unipi.it/~persona">poisson.phc.dm.unipi.it/~persona</a></li>
+    <li>Persona 1 &mdash; <a href="poisson.phc.dm.unipi.it/~persona">poisson.phc.dm.unipi.it/~persona</a></li>
+    <li>Persona 1 &mdash; <a href="poisson.phc.dm.unipi.it/~persona">poisson.phc.dm.unipi.it/~persona</a></li>
+    <li>Persona 1 &mdash; <a href="poisson.phc.dm.unipi.it/~persona">poisson.phc.dm.unipi.it/~persona</a></li>
+    <li>Persona 1 &mdash; <a href="poisson.phc.dm.unipi.it/~persona">poisson.phc.dm.unipi.it/~persona</a></li>
+</ul>
+
+<div class="news-list">
+    <article>
+        <h3>Notizie 1</h3>
+        <div class="description">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet quis eligendi aut consequatur quasi
+            veniam animi ducimus enim consectetur a.
         </div>
-        <div class="nav-item">
-            <a href="/utenti">Utenti</a>
+    </article>
+    <article>
+        <h3>Notizie 2</h3>
+        <div class="description">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet quis eligendi aut consequatur quasi
+            veniam animi ducimus enim consectetur a.
         </div>
-        <div class="nav-item">
-            <a href="/notizie">Notizie</a>
+    </article>
+    <article>
+        <h3>Notizie 3</h3>
+        <div class="description">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet quis eligendi aut consequatur quasi
+            veniam animi ducimus enim consectetur a.
         </div>
-        <div class="nav-item">
-            <a href="/guide">Guide</a>
-        </div>
-        <div class="nav-item">
-            <a href="/git">Git</a>
-        </div>
-        <div class="nav-item">
-            Forum
-        </div>
-
-        <div class="hfill"></div>
-        <!-- User -->
-        <div class="nav-item">
-            <a href="/login">Login</a>
-        </div>
-    </nav>
-
-    <h1>Poisson</h1>
-
-    <h2>Macchinisti</h2>
-
-    <ul>
-        <li>Persona 1 &mdash; <a href="poisson.phc.dm.unipi.it/~persona">poisson.phc.dm.unipi.it/~persona</a></li>
-        <li>Persona 1 &mdash; <a href="poisson.phc.dm.unipi.it/~persona">poisson.phc.dm.unipi.it/~persona</a></li>
-        <li>Persona 1 &mdash; <a href="poisson.phc.dm.unipi.it/~persona">poisson.phc.dm.unipi.it/~persona</a></li>
-        <li>Persona 1 &mdash; <a href="poisson.phc.dm.unipi.it/~persona">poisson.phc.dm.unipi.it/~persona</a></li>
-        <li>Persona 1 &mdash; <a href="poisson.phc.dm.unipi.it/~persona">poisson.phc.dm.unipi.it/~persona</a></li>
-        <li>Persona 1 &mdash; <a href="poisson.phc.dm.unipi.it/~persona">poisson.phc.dm.unipi.it/~persona</a></li>
-        <li>Persona 1 &mdash; <a href="poisson.phc.dm.unipi.it/~persona">poisson.phc.dm.unipi.it/~persona</a></li>
-    </ul>
-
-    <div class="news-list">
-        <article>
-            <h3>Notizie 1</h3>
-            <div class="description">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet quis eligendi aut consequatur quasi
-                veniam animi ducimus enim consectetur a.
-            </div>
-        </article>
-        <article>
-            <h3>Notizie 2</h3>
-            <div class="description">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet quis eligendi aut consequatur quasi
-                veniam animi ducimus enim consectetur a.
-            </div>
-        </article>
-        <article>
-            <h3>Notizie 3</h3>
-            <div class="description">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet quis eligendi aut consequatur quasi
-                veniam animi ducimus enim consectetur a.
-            </div>
-        </article>
-    </div>
-
-    <footer>
-        &copy; macchinisti@poisson.phc.dm.unipi.it
-    </footer>
-</body>
-
-</html>
+    </article>
+</div>
+{{end}}
