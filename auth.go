@@ -27,7 +27,7 @@ func NewAuthenticationService(url string) (*AuthenticationService, error) {
 	status, _ := ioutil.ReadAll(res.Body)
 
 	if string(status) != "online" {
-		log.Fatal("Authentication service isn't online, status: '%s'", status)
+		log.Fatalf("Authentication service isn't online, status: '%s'", status)
 	}
 
 	return service, nil
