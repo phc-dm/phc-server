@@ -2,32 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>golang on Blog del PHC</title>
-    <link>https://phc.dm.unipi.it/tags/golang/</link>
+    <link>/blog/tags/golang/</link>
     <description>Recent content in golang on Blog del PHC</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
     <copyright>PHC</copyright>
     <lastBuildDate>Wed, 02 Apr 2014 02:13:50 +0000</lastBuildDate>
     
-	<atom:link href="https://phc.dm.unipi.it/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/blog/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>(Hu)go Template Primer</title>
-      <link>https://phc.dm.unipi.it/2014/04/02/goisforlovers/</link>
+      <link>/blog/2014/04/02/goisforlovers/</link>
       <pubDate>Wed, 02 Apr 2014 02:13:50 +0000</pubDate>
       
-      <guid>https://phc.dm.unipi.it/2014/04/02/goisforlovers/</guid>
+      <guid>/blog/2014/04/02/goisforlovers/</guid>
       <description>Hugo uses the excellent go html/template library for its template engine. It is an extremely lightweight engine that provides a very small amount of logic. In our experience that it is just the right amount of logic to be able to create a good static website. If you have used other template systems from different languages or frameworks you will find a lot of similarities in go templates.
 This document is a brief primer on using go templates.</description>
     </item>
     
     <item>
       <title>Getting Started with Hugo</title>
-      <link>https://phc.dm.unipi.it/2014/04/02/hugoisforlovers/</link>
+      <link>/blog/2014/04/02/hugoisforlovers/</link>
       <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://phc.dm.unipi.it/2014/04/02/hugoisforlovers/</guid>
+      <guid>/blog/2014/04/02/hugoisforlovers/</guid>
       <description>Step 1. Install Hugo Goto hugo releases and download the appropriate version for your os and architecture.
 Save it somewhere specific as we will be using it in the next step.
 More complete instructions are available at installing hugo

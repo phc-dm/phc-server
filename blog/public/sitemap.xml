@@ -3,92 +3,117 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://phc.dm.unipi.it/page/about/</loc>
+    <loc>/blog/2020/06/25/nuovo-sito-di-poisson/</loc>
+    <lastmod>2020-06-25T20:23:58+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/</loc>
+    <lastmod>2020-06-25T20:23:58+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/categories/</loc>
+    <lastmod>2020-06-25T20:23:58+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/2020/06/25/come-usare-il-servizio-git/</loc>
+    <lastmod>2020-06-25T20:23:58+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/categories/guide/</loc>
+    <lastmod>2020-06-25T20:23:58+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/post/</loc>
+    <lastmod>2020-06-25T20:23:58+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/categories/progetti/</loc>
+    <lastmod>2020-06-25T20:23:58+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/page/about/</loc>
     <lastmod>2015-04-03T02:13:50+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://phc.dm.unipi.it/</loc>
+    <loc>/blog/page/contact/</loc>
     <lastmod>2015-04-03T02:13:50+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://phc.dm.unipi.it/page/contact/</loc>
+    <loc>/blog/page/</loc>
     <lastmod>2015-04-03T02:13:50+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://phc.dm.unipi.it/page/</loc>
-    <lastmod>2015-04-03T02:13:50+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://phc.dm.unipi.it/project/my-awesome-project/</loc>
+    <loc>/blog/project/my-awesome-project/</loc>
     <lastmod>2014-11-18T02:13:50+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://phc.dm.unipi.it/project/</loc>
+    <loc>/blog/project/</loc>
     <lastmod>2014-11-18T02:13:50+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://phc.dm.unipi.it/2014/09/28/creating-a-new-theme/</loc>
+    <loc>/blog/2014/09/28/creating-a-new-theme/</loc>
     <lastmod>2014-09-28T02:13:50+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://phc.dm.unipi.it/post/</loc>
-    <lastmod>2014-09-28T02:13:50+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://phc.dm.unipi.it/2014/04/02/goisforlovers/</loc>
+    <loc>/blog/2014/04/02/goisforlovers/</loc>
     <lastmod>2014-04-02T02:13:50+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://phc.dm.unipi.it/tags/development/</loc>
+    <loc>/blog/tags/development/</loc>
     <lastmod>2014-04-02T02:13:50+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://phc.dm.unipi.it/tags/go/</loc>
+    <loc>/blog/tags/go/</loc>
     <lastmod>2014-04-02T02:13:50+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://phc.dm.unipi.it/tags/golang/</loc>
+    <loc>/blog/tags/golang/</loc>
     <lastmod>2014-04-02T02:13:50+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://phc.dm.unipi.it/2014/04/02/migrate-from-jekyll/</loc>
+    <loc>/blog/2014/04/02/migrate-from-jekyll/</loc>
     <lastmod>2014-04-02T02:13:50+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://phc.dm.unipi.it/tags/</loc>
+    <loc>/blog/tags/</loc>
     <lastmod>2014-04-02T02:13:50+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://phc.dm.unipi.it/tags/templates/</loc>
+    <loc>/blog/tags/templates/</loc>
     <lastmod>2014-04-02T02:13:50+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://phc.dm.unipi.it/tags/themes/</loc>
+    <loc>/blog/tags/themes/</loc>
     <lastmod>2014-04-02T02:13:50+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://phc.dm.unipi.it/2014/04/02/hugoisforlovers/</loc>
+    <loc>/blog/2014/04/02/hugoisforlovers/</loc>
     <lastmod>2014-04-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://phc.dm.unipi.it/tags/hugo/</loc>
+    <loc>/blog/tags/hugo/</loc>
     <lastmod>2014-04-02T00:00:00+00:00</lastmod>
   </url>
   

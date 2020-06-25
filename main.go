@@ -1,6 +1,7 @@
 package main
 
 import (
+	"html/template"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -9,13 +10,16 @@ import (
 func main() {
 	r := gin.Default()
 
-	r.GET("/someJSON", func(c *gin.Context) {
-		data := map[string]interface{}{
-			"lang": "GO语言",
-			"tag":  "<br>",
-		}
+	r.Static("/assets", "./assets")
+	r.Static("/blog", "./blog/public")
 
-		c.JSON(http.StatusOK, data)
+	r.GET("/", func(c *gin.Context) {
+		r.SetHTMLTemplate(template.Must(template.ParseFiles("./views/base.html", "./views/home.html")))
+		c.HTML(http.StatusOK, "base", gin.H{})
+	})
+	r.GET("/utenti", func(c *gin.Context) {
+		r.SetHTMLTemplate(template.Must(template.ParseFiles("./views/base.html", "./views/utenti.html")))
+		c.HTML(http.StatusOK, "base", gin.H{})
 	})
 
 	r.Run(":8000")

@@ -1,5 +1,12 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Sen&family=Work+Sans:wght@700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Share:wght@700&family=Ubuntu+Mono&family=Ubuntu:wght@300;700&display=swap');
+
+/* @import url('https://fonts.googleapis.com/css2?family=Sen&family=Work+Sans:wght@700&display=swap'); */
+
+:root {
+    --accent-1: royalblue;
+}
 
 * {
     box-sizing: border-box;
@@ -16,19 +23,35 @@ body {
     display: flex;
     flex-direction: column;
 
-    font-family: 'Sen';
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.25;
 }
 
 h1, h2, h3, h4 {
-    font-family: 'Work Sans';
+    font-family: 'Share', cursive;
     font-weight: 700;
+}
+
+a, a:focus, a:visited {
+    color: #666;
+    text-decoration: #aaa underline;
+    padding: 1px 2px;
+    border-radius: 2px;
+}
+
+a:hover {
+    background: var(--accent-1);
+    color: white;
 }
 
 body {
     max-width: 100%;
     width: 50rem;
     margin: 0 auto;
-    padding: 0 0.5em;
+    padding: 0 0.5rem;   
+    overflow-y: scroll;
 }
 
 nav {
@@ -51,17 +74,38 @@ nav {
 }
 
 .news-list > article {
-    margin: 1em;
-    /* padding: 1em; */
-    /* background: greenyellow; */
+    margin: 1rem;
+}
+
+.nav-item:first-child {
+    font-size: 25px;
 }
 
 .nav-item {
-    margin: 1em 0.75em;
+    font-family: 'Share', cursive;
+    font-weight: 700;
+
+    font-size: 21px;
+}
+
+.nav-item:hover {
+    background: #f0f0f0;
+}
+
+.nav-item a, .nav-item a:focus, .nav-item a:visited {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 0.75rem;
+    height: 3.25rem;
+    
+    color: black;
+    text-decoration: none;
 }
 
 body > div:last-of-type {
-    margin-bottom: 20em;
+    margin-bottom: 20rem;
 }
 
 footer {
@@ -69,7 +113,7 @@ footer {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 3em;
+    height: 3rem;
     display: flex;
     align-items: center;
     justify-content: center;

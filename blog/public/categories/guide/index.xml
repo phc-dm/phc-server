@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Guide on Blog del PHC</title>
+    <link>/blog/categories/guide/</link>
+    <description>Recent content in Guide on Blog del PHC</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>PHC</copyright>
+    <lastBuildDate>Thu, 25 Jun 2020 20:23:58 +0200</lastBuildDate>
+    
+	<atom:link href="/blog/categories/guide/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Come usare il servizio Git</title>
+      <link>/blog/2020/06/25/come-usare-il-servizio-git/</link>
+      <pubDate>Thu, 25 Jun 2020 20:23:58 +0200</pubDate>
+      
+      <guid>/blog/2020/06/25/come-usare-il-servizio-git/</guid>
+      <description>Come usare il serivizio Git Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec dolor in magna lobortis egestas. Suspendisse eu erat tempor, tristique neque eu, convallis nulla. Curabitur vel bibendum lacus, at semper mauris. Suspendisse aliquet commodo ex, sed sagittis metus aliquam id. Maecenas feugiat rutrum lorem vel imperdiet. Nullam ornare lectus ut enim finibus, et porttitor mi tincidunt.</description>
+    </item>
+    
+  </channel>
+</rss>

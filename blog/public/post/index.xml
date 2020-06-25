@@ -2,42 +2,59 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Blog del PHC</title>
-    <link>https://phc.dm.unipi.it/post/</link>
+    <link>/blog/post/</link>
     <description>Recent content in Posts on Blog del PHC</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
     <copyright>PHC</copyright>
-    <lastBuildDate>Sun, 28 Sep 2014 02:13:50 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 25 Jun 2020 20:23:58 +0200</lastBuildDate>
     
-	<atom:link href="https://phc.dm.unipi.it/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/blog/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Annuncio nuovo sito del PHC</title>
+      <link>/blog/2020/06/25/nuovo-sito-di-poisson/</link>
+      <pubDate>Thu, 25 Jun 2020 20:23:58 +0200</pubDate>
+      
+      <guid>/blog/2020/06/25/nuovo-sito-di-poisson/</guid>
+      <description>Il nuovo sito del PHC Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec dolor in magna lobortis egestas. Suspendisse eu erat tempor, tristique neque eu, convallis nulla. Curabitur vel bibendum lacus, at semper mauris. Suspendisse aliquet commodo ex, sed sagittis metus aliquam id. Maecenas feugiat rutrum lorem vel imperdiet. Nullam ornare lectus ut enim finibus, et porttitor mi tincidunt.</description>
+    </item>
+    
+    <item>
+      <title>Come usare il servizio Git</title>
+      <link>/blog/2020/06/25/come-usare-il-servizio-git/</link>
+      <pubDate>Thu, 25 Jun 2020 20:23:58 +0200</pubDate>
+      
+      <guid>/blog/2020/06/25/come-usare-il-servizio-git/</guid>
+      <description>Come usare il serivizio Git Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec dolor in magna lobortis egestas. Suspendisse eu erat tempor, tristique neque eu, convallis nulla. Curabitur vel bibendum lacus, at semper mauris. Suspendisse aliquet commodo ex, sed sagittis metus aliquam id. Maecenas feugiat rutrum lorem vel imperdiet. Nullam ornare lectus ut enim finibus, et porttitor mi tincidunt.</description>
+    </item>
+    
+    <item>
       <title>Creating a New Theme</title>
-      <link>https://phc.dm.unipi.it/2014/09/28/creating-a-new-theme/</link>
+      <link>/blog/2014/09/28/creating-a-new-theme/</link>
       <pubDate>Sun, 28 Sep 2014 02:13:50 +0000</pubDate>
       
-      <guid>https://phc.dm.unipi.it/2014/09/28/creating-a-new-theme/</guid>
+      <guid>/blog/2014/09/28/creating-a-new-theme/</guid>
       <description>Introduction This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&amp;rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&amp;rsquo;t cover using CSS to style your theme.
 We&amp;rsquo;ll start with creating a new site with a very basic template.</description>
     </item>
     
     <item>
       <title>(Hu)go Template Primer</title>
-      <link>https://phc.dm.unipi.it/2014/04/02/goisforlovers/</link>
+      <link>/blog/2014/04/02/goisforlovers/</link>
       <pubDate>Wed, 02 Apr 2014 02:13:50 +0000</pubDate>
       
-      <guid>https://phc.dm.unipi.it/2014/04/02/goisforlovers/</guid>
+      <guid>/blog/2014/04/02/goisforlovers/</guid>
       <description>Hugo uses the excellent go html/template library for its template engine. It is an extremely lightweight engine that provides a very small amount of logic. In our experience that it is just the right amount of logic to be able to create a good static website. If you have used other template systems from different languages or frameworks you will find a lot of similarities in go templates.
 This document is a brief primer on using go templates.</description>
     </item>
     
     <item>
       <title>Migrating from Jekyll</title>
-      <link>https://phc.dm.unipi.it/2014/04/02/migrate-from-jekyll/</link>
+      <link>/blog/2014/04/02/migrate-from-jekyll/</link>
       <pubDate>Wed, 02 Apr 2014 02:13:50 +0000</pubDate>
       
-      <guid>https://phc.dm.unipi.it/2014/04/02/migrate-from-jekyll/</guid>
+      <guid>/blog/2014/04/02/migrate-from-jekyll/</guid>
       <description>Move static content to static Jekyll has a rule that any directory not starting with _ will be copied as-is to the _site output. Hugo keeps all static content under static. You should therefore move it all there. With Jekyll, something that looked like
 ▾ &amp;lt;root&amp;gt;/ ▾ images/ logo.png  should become
 ▾ &amp;lt;root&amp;gt;/ ▾ static/ ▾ images/ logo.png  Additionally, you&amp;rsquo;ll want any files that should reside at the root (such as CNAME) to be moved to static.</description>
@@ -45,10 +62,10 @@ This document is a brief primer on using go templates.</description>
     
     <item>
       <title>Getting Started with Hugo</title>
-      <link>https://phc.dm.unipi.it/2014/04/02/hugoisforlovers/</link>
+      <link>/blog/2014/04/02/hugoisforlovers/</link>
       <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://phc.dm.unipi.it/2014/04/02/hugoisforlovers/</guid>
+      <guid>/blog/2014/04/02/hugoisforlovers/</guid>
       <description>Step 1. Install Hugo Goto hugo releases and download the appropriate version for your os and architecture.
 Save it somewhere specific as we will be using it in the next step.
 More complete instructions are available at installing hugo

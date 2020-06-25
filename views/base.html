@@ -14,29 +14,26 @@
     <nav>
         <!-- Site -->
         <div class="nav-item">
-            <a href="/">Poisson</a>
+            <a href="/">PHC</a>
         </div>
         <div class="nav-item">
             <a href="/utenti">Utenti</a>
         </div>
         <div class="nav-item">
-            <a href="/notizie">Notizie</a>
+            <a href="/blog">Notizie</a>
         </div>
         <div class="nav-item">
-            <a href="/guide">Guide</a>
+            <a href="https://git.phc.dm.unipi.it">Git</a>
         </div>
         <div class="nav-item">
-            <a href="/git">Git</a>
-        </div>
-        <div class="nav-item">
-            Forum
+            <a href="https://forum.phc.dm.unipi.it">Forum</a>
         </div>
         <!-- Spacing -->
         <div class="hfill"></div>
         <!-- User -->
         {{if .User}}
         <div class="nav-item">
-            <a href="/logout">Logout</a>
+            <a href="/settings">@{{ .User }}</a>
         </div>
         {{else}}
         <div class="nav-item">

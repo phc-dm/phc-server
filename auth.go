@@ -1,53 +1,53 @@
 package main
 
-import (
-	"bytes"
-	"encoding/json"
-	"io/ioutil"
-	"log"
-	"net/http"
-)
+// User as in auth-poisson
+type User struct {
+	Username string
+	UID      int
 
-// AuthenticationService è l'interfaccia del servizio di autenticazione sul server principale
-type AuthenticationService struct {
+	Name     string
+	Surname  string
+	FullName string
+
+	// ...
+}
+
+// AuthService rappresenta un servizio di autenticazione
+type AuthService interface {
+	GetUsers() []User
+
+	GetUser(username string) User
+
+	// LoginUser if successful returns the token for this user that will be stored in an HTTP cookie.
+	LoginUser(username, password string) (string, error)
+}
+
+// LdapService ...
+type LdapService struct {
+	URL string
+}
+
+// FakeService ...
+type FakeService struct {
 	URL string
 }
 
 // NewAuthenticationService crea un nuovo servizio di autenticazione e controlla se è attivo
-func NewAuthenticationService(url string) (*AuthenticationService, error) {
-	service := new(AuthenticationService)
-	service.URL = url
+// func NewAuthenticationService(url string) (*LdapService, error) {
+// 	service := new(LdapService)
+// 	service.URL = url
 
-	res, err := service.Get("status")
+// 	res, err := service.Get("status")
 
-	if err != nil {
-		return nil, err
-	}
+// 	if err != nil {
+// 		return nil, err
+// 	}
 
-	status, _ := ioutil.ReadAll(res.Body)
+// 	status, _ := ioutil.ReadAll(res.Body)
 
-	if string(status) != "online" {
-		log.Fatalf("Authentication service isn't online, status: '%s'", status)
-	}
+// 	if string(status) != "true" {
+// 		log.Fatalf("Authentication service isn't online, status: '%s'", status)
+// 	}
 
-	return service, nil
-}
-
-// Get ...
-func (service *AuthenticationService) Get(url string) (*http.Response, error) {
-	return http.Get(service.URL + "/" + url)
-}
-
-// Authenticate ...
-func (service *AuthenticationService) Authenticate(username, password string) bool {
-
-	json, _ := json.Marshal(struct {
-		Username, Password string
-	}{username, password})
-
-	res, _ := http.Post(service.URL+"/auth", "application/json", bytes.NewReader(json))
-
-	result, _ := ioutil.ReadAll(res.Body)
-
-	return string(result) == "true"
-}
+// 	return service, nil
+// }

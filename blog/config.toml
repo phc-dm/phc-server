@@ -1,7 +1,6 @@
-baseurl = "https://phc.dm.unipi.it/"
+baseURL = "/blog/"
 title = "Blog del PHC"
 theme = "ghostwriter"
-languageCode = "en-us"
 copyright = "PHC"
 pygmentsUseClasses = true
 pygmentsCodefences = true
@@ -24,12 +23,14 @@ profile = "/page/contact"
 
 [taxonomies]
 tag = "tags"
+category = "categories"
+# Le categorie valide sono: "Guide", "Progetti"
 
 [params]
 mainSections = [ "post" ]
 intro = true
 headline = "Blog del PHC"
-description = "Qui postiamo notizie importanti, progetti e qualche guida."
+description = "[WIP - Lo stile è da cambiare!] Qui postiamo notizie importanti, progetti e qualche guida."
 github = "https://github.com/PHC-DM"
 email = "macchinisti@poisson.phc.dm.unipi.it"
 opengraph = true
@@ -50,16 +51,21 @@ post = "/:year/:month/:day/:filename/"
   weight = 1.0
 
   [[menu.main]]
+  name = "Guide"
+  url = "/categories/guide/"
+  weight = 2.0
+
+  [[menu.main]]
   name = "Progetti"
-  url = "/project/"
+  url = "/categories/progetti/"
   weight = 2.0
 
   [[menu.main]]
   name = "Contattaci"
   url = "/page/contact/"
-  weight = 3.0
+  weight = 4.0
 
   [[menu.main]]
   name = "About"
   url = "/page/about/"
-  weight = 4.0
+  weight = 5.0
