@@ -1,0 +1,65 @@
+baseurl = "https://phc.dm.unipi.it/"
+title = "Blog del PHC"
+theme = "ghostwriter"
+languageCode = "en-us"
+copyright = "PHC"
+pygmentsUseClasses = true
+pygmentsCodefences = true
+
+[markup]
+
+  [markup.highlight]
+  codeFences = true
+  guessSyntax = false
+  hl_Lines = ""
+  lineNoStart = 1.0
+  lineNos = false
+  lineNumbersInTable = true
+  noClasses = true
+  tabWidth = 2.0
+
+[author]
+name = "My Name"
+profile = "/page/contact"
+
+[taxonomies]
+tag = "tags"
+
+[params]
+mainSections = [ "post" ]
+intro = true
+headline = "Blog del PHC"
+description = "Qui postiamo notizie importanti, progetti e qualche guida."
+github = "https://github.com/PHC-DM"
+email = "macchinisti@poisson.phc.dm.unipi.it"
+opengraph = true
+dateFormat = "Mon, Jan 2, 2006"
+readingTime = true
+readingTimeText = "Tempo di letturna ~"
+fathomUrl = ""
+fathomSiteId = ""
+
+[permalinks]
+post = "/:year/:month/:day/:filename/"
+
+[menu]
+
+  [[menu.main]]
+  name = "News"
+  url = "/"
+  weight = 1.0
+
+  [[menu.main]]
+  name = "Progetti"
+  url = "/project/"
+  weight = 2.0
+
+  [[menu.main]]
+  name = "Contattaci"
+  url = "/page/contact/"
+  weight = 3.0
+
+  [[menu.main]]
+  name = "About"
+  url = "/page/about/"
+  weight = 4.0
