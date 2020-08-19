@@ -1,20 +1,26 @@
 {{template "base" .}}
 
-{{define "title"}}Poisson - Utenti{{end}}
+{{define "title"}}PHC &bull; Accedi &bull; phc.dm.xxxxx.xx{{end}}
 
 {{define "body"}}
 <h1>Login</h1>
 <p>Inserisci le tue credenziali di Poisson per accedere</p>
 
 <form action="/login" method="post">
+    <div class="row">
+        <label for="login-username">Username:</label>
+        <input type="text" name="username" id="login-username">    
+    </div>
+    <div class="row">
+        <label for="login-password">Password:</label>
+        <input type="text" name="password" id="login-password">
+    </div>
+    <input type="submit" value="Accedi">
 
-    <label for="login-username">Username:</label>
-    <input type="text" name="username" id="login-username">
-    
-    <label for="login-password">Password:</label>
-    <input type="text" name="password" id="login-password">
-    
-    <input type="submit" value="Login">
 </form>
+
+<p title="Vieni al phc per parlarne con calma o inviaci una mail">
+    🛈 Recupero credenziali
+</p>
 
 {{end}}

@@ -1,20 +1,20 @@
 # Nuovo Sito Poisson
 
-Servizio del nuovo sito del PHC
+Server che gestisce il nuovo sito del PHC, che verrà hostato a `https://phc.dm.*****.**`.
 
 ## Technologies
 
-- [Gin Web Framework](https://gin-gonic.com/) &mdash; https://github.com/gin-gonic/gin
+- [Echo Web Framework](https://echo.labstack.com/) &mdash; https://github.com/labstack/echo
 
     Sembra un framework abbastanza usato ed ha molte stelle.
 
 - [Hugo](https://gohugo.io) &mdash; Generatore statico di blog scritto in Go.
 
-    Tutta la parte di contenuti: blog, notizie, guide, etc. Verrà gestita da Hugo e servita sotto l'url `/blog`.
+    Tutta la parte di contenuti: blog, notizie, guide, etc. Verrà gestita da Hugo e servita sotto l'url `/blog` ed in teoria sarà sotto `content-poisson`.
 
 ## Development
 
-Esegui `go run main.go` per farlo girare su `localhost:8000` e vedere le modifiche in diretta, amico.
+Usare il comando `MODE=development go run main.go` per lanciare il server su `localhost:8000`.
 
 ## Design (?)
 
@@ -22,7 +22,8 @@ Esegui `go run main.go` per farlo girare su `localhost:8000` e vedere le modific
 
 - Share 700: per le intestazioni
 - Ubuntu 300, 700: per il testo.
-- Ubuntu Mono: per i blocchi di codice 
+- Ubuntu Mono: per i blocchi di codice
+
 
 ```css
 @import url('https://fonts.googleapis.com/css2?family=Share:wght@700&family=Ubuntu+Mono&family=Ubuntu:wght@300;700&display=swap');

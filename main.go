@@ -1,26 +1,60 @@
 package main
 
 import (
-	"html/template"
+	"log"
 	"net/http"
+	"os"
+	"strconv"
 
-	"github.com/gin-gonic/gin"
+	"git.phc.dm.xxxxx.xx/server-poisson/utils"
+	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 )
 
+type object map[string]interface{}
+
+func init() {
+
+	log.SetFlags(log.Ldate | log.Ltime | log.Lshortfile)
+
+	log.Printf("MODE = %v (default: production)", os.Getenv("MODE"))
+	log.Printf("PORT = %v (default: 8000)", os.Getenv("PORT"))
+
+}
+
 func main() {
-	r := gin.Default()
+	// Echo instance
+	e := echo.New()
 
-	r.Static("/assets", "./assets")
-	r.Static("/blog", "./blog/public")
+	// Middleware
+	e.Use(middleware.Logger())
+	e.Use(middleware.Recover())
 
-	r.GET("/", func(c *gin.Context) {
-		r.SetHTMLTemplate(template.Must(template.ParseFiles("./views/base.html", "./views/home.html")))
-		c.HTML(http.StatusOK, "base", gin.H{})
+	// Templates & Renderer
+	e.Renderer = utils.NewTemplateRenderer("base.html")
+
+	// Static assets
+	e.Static("/assets", "./assets")
+	e.Static("/blog", "./blog/public")
+
+	// Routes
+	e.GET("/", func(c echo.Context) error {
+		return c.Render(http.StatusOK, "home.html", object{})
 	})
-	r.GET("/utenti", func(c *gin.Context) {
-		r.SetHTMLTemplate(template.Must(template.ParseFiles("./views/base.html", "./views/utenti.html")))
-		c.HTML(http.StatusOK, "base", gin.H{})
+	e.GET("/utenti", func(c echo.Context) error {
+		return c.Render(http.StatusOK, "utenti.html", object{})
+	})
+	e.GET("/login", func(c echo.Context) error {
+		return c.Render(http.StatusOK, "login.html", object{})
 	})
 
-	r.Run(":8000")
+	port, ok := strconv.Atoi(os.Getenv("PORT"))
+	if ok != nil {
+		port = 8000
+	}
+
+	log.Print(port)
+
+	// Start server
+	e.Logger.Fatal(e.Start(":" + strconv.Itoa(port)))
 }

@@ -5,8 +5,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{template "title" .}}</title>
+    <title>{{ template "title" . }}</title>
 
+    <!-- TODO: Da cambiare molto probabilmente -->
+    <link rel="icon" href="/assets/icons/icons8-electronics-100.png">
+    
     <link rel="stylesheet" href="/assets/style.css">
 </head>
 
@@ -37,15 +40,20 @@
         </div>
         {{else}}
         <div class="nav-item">
-            <a href="/login">Login</a>
+            <a href="/login">Accedi</a>
         </div>
         {{end}}
     </nav>
 
-    {{template "body" .}}
+    {{ template "body" . }}
     
     <footer>
-        macchinisti@poisson.phc.dm.unipi.it
+        <div class="footer-item">
+            macchinisti@poisson.phc.dm.unipi.it
+        </div>
+        <div class="footer-item">
+            Icone da <a target="_blank" href="https://icons8.it">Icons8</a>
+        </div>
     </footer>
 </body>
 
