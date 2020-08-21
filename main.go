@@ -35,7 +35,17 @@ func main() {
 
 	// Static assets
 	e.Static("/assets", "./assets")
-	e.Static("/blog", "./blog/public")
+
+	// Blog from "content-poisson"
+	blogRoute := e.Group("/blog", middleware.Static("./blog"))
+	{
+		blogRoute.GET("", func(c echo.Context) error {
+			return c.Redirect(http.StatusPermanentRedirect, "/blog/")
+		})
+		blogRoute.GET("/", func(c echo.Context) error {
+			return c.File("./blog/index.html")
+		})
+	}
 
 	// Routes
 	e.GET("/", func(c echo.Context) error {
