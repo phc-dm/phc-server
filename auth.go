@@ -1,16 +1,8 @@
 package main
 
-// User as in auth-poisson
-type User struct {
-	Username string
-	UID      int
-
-	Name     string
-	Surname  string
-	FullName string
-
-	// ...
-}
+import (
+	. "github.com/phc-dm/auth-poisson/user"
+)
 
 // AuthService rappresenta un servizio di autenticazione
 type AuthService interface {
