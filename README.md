@@ -4,7 +4,28 @@ Documentazione principale è raccolta in [un altro repository](https://github.co
 
 ## Development
 
-Usare il comando `MODE=development go run main.go` per lanciare il server su `localhost:8000`.
+### Setup
+
+Per clonare il progetto usare
+
+```bash
+$ git clone --recursive https://github.com/phc-dm/server-poisson
+```
+
+l'opzione `--recursive` serve a clonare anche il sottomodule relativo al blog del sito, si può anche omettere però non sarà disponibile la visualizzazione del blog in fase di development.
+
+### Usage
+
+Usare il seguente comando per lanciare il server su `localhost:8000`.
+
+```bash
+$ MODE=development go run main.go
+```
+
+Environment variables:
+
+- `MODE`: di default è `production`, può anche essere `development`
+- `PORT`: controlla la porta su cui viene lanciato il server, di default è `8000` 
 
 ## Materiale
 
