@@ -5,136 +5,334 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Sen&family=Work+Sans:wght@700&display=swap'); */
 
 :root {
-    --accent-1: royalblue;
+    --font-title: 'Share', cursive;
+    --font-text: 'Ubuntu', sans-serif;
+    --font-mono: 'Ubuntu Mono', monospace;
 }
 
 * {
     box-sizing: border-box;
 }
 
-html {
-    position: relative;
-}
-
 html,
 body {
+    position: relative;
+ 
     margin: 0;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    min-height: 100%;
 
-    font-family: 'Ubuntu', sans-serif;
+    font-family: var(--font-text);
     font-weight: 300;
     font-size: 17px;
     line-height: 1.25;
 }
 
-h1, h2, h3, h4 {
-    font-family: 'Share', cursive;
-    font-weight: 700;
-}
+html {
+    background: gray;
 
-a, a:focus, a:visited {
-    color: #666;
-    text-decoration: #aaa underline;
-    padding: 1px 2px;
-    border-radius: 2px;
-}
-
-a:hover {
-    background: var(--accent-1);
-    color: white;
+    height: 100%;
+    min-height: 100%;
 }
 
 body {
-    max-width: 100%;
-    width: 50rem;
     margin: 0 auto;
-    padding: 0 0.5rem;   
-    overflow-y: scroll;
+    padding-bottom: 5rem;
+
+    max-width: 850px;
+    text-align: justify;
+
+    background: white;
 }
+
+/* Typography */
+
+h1, h2, h3, h4 {
+    margin: 0;
+
+    font-family: var(--font-title);
+    font-weight: 700;
+}
+
+p {
+    margin: 0.5rem 0 0 0;
+}
+
+body > h1, body > h2, body > h3, body > h4, body > p {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+/* Elements */
 
 nav {
     display: flex;
-    align-items: center;
-    border-bottom: 1px solid #ddd;
     flex-wrap: wrap;
-}
+    padding: 0.5rem;
 
-.hfill {
-    flex-grow: 1;
-}
-
-.vfill {
-    flex-grow: 1;
-}
-
-.news-list {
-    display: flex;
-}
-
-.news-list > article {
-    margin: 1rem;
-}
-
-.nav-item:first-child {
-    font-size: 25px;
+    border-bottom: 0.5rem solid gray;
 }
 
 .nav-item {
-    font-family: 'Share', cursive;
-    font-weight: 700;
-
-    font-size: 21px;
-}
-
-.nav-item:hover {
-    background: #f0f0f0;
-}
-
-.nav-item a, .nav-item a:focus, .nav-item a:visited {
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 2.5rem;
 
-    padding: 0 0.75rem;
-    height: 3.25rem;
-    
-    color: black;
+    padding: 0 0.5rem;
+
+    font-size: 130%;
+    font-weight: bold;
+}
+
+nav > * {
+    border: 2px solid black;
+    border-right: none;
+}
+
+nav > :last-child {
+    border: 2px solid black;
+}
+
+nav a {
     text-decoration: none;
 }
 
-body > div:last-of-type {
-    margin-bottom: 20rem;
+header {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+
+    margin: 2.5rem 0;
+}
+
+header .logo {
+    margin-right: 1rem;
+}
+
+header .title {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+header .title h1 {
+    font-size: 56px;
+    display: inline-block;
+    transform: translate(-0.125rem);
+}
+
+.service-list {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin: 1rem;
+    gap: 0.5rem;
+}
+
+.service {
+    flex: 1 1 calc(50% - 1rem);
+    min-width: 300px;
+
+    padding: 1rem 0.75rem;
+
+    /* Brutal */
+    border: 2px solid black;
+}
+
+.user-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+    margin: 1rem 2rem;
+    gap: 0.25rem;
+}
+
+.user {
+    display: flex;
+
+    width: calc(50% - 0.25rem / 2);
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0.125rem 0.25rem;
+
+    border: 2px solid;
+}
+
+.user h4 {
+    font-size: 90%;
+    line-height: 1;
+    font-family: var(--font-mono);
+}
+
+.user a {
+    text-decoration: none;
+}
+
+.user a:hover img {
+    opacity: 0.6;
+}
+
+.user img {
+    margin: 0.5rem;
 }
 
 footer {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 100%;
-    height: 3rem;
-    
+    right: 0;
+
     display: flex;
-    
+    flex-wrap: wrap;
+
     align-items: center;
     justify-content: center;
-    border-top: 1px solid #ddd;
+
+    border-top: 0.5rem solid gray;
 }
 
-.footer-item:not(:last-child)::after {
-    content: '•';
-    margin: 0 1rem;
+.footer-item {
+    padding: 0.5rem;
+    font-size: 90%;
 }
 
-@media screen and (max-width: 600px) {
+.search {
+    display: flex;
+    align-items: center;
 
-    body {
-        width: 100%;
-        overflow-x: hidden;
-    }
+    max-width: 27rem;
+    margin: 1rem auto;
+    
+    border: 2px solid black;
+}
 
-    .news-list {
-        flex-direction: column;
-    }
+#search-field {
+    width: 100%;
+    flex-grow: 1;
+
+    height: 1.75rem;
+    padding: 0 0.5rem;
+
+    border: none;
+    border-right: 2px solid black;
+}
+
+.search img {
+    display: block;
+    transform: scale(0.8);
+
+    width: 1.75rem;
+    height: 1.75rem;
+
+    cursor: pointer;
+}
+
+/* Common */
+
+a, a:visited {
+    color: black;
+}
+
+a:hover {
+    color: gray;
+}
+
+hr {
+    width: 100%;
+    height: 0.5rem;
+    
+    margin: 1rem 0;
+    padding: 0;
+    
+    background: gray;
+    border: none;
+}
+
+ul {
+    list-style: square;
+}
+
+li {
+    margin: 0.25rem 0;
+}
+
+form {
+    margin: 1rem auto;
+    padding: 0.75rem;
+
+    max-width: 30rem;
+    border: 2px solid black;
+}
+
+form .row {
+    display: flex;
+    width: 100%;
+
+    margin-bottom: 0.5rem;
+}
+
+form p {
+    margin-bottom: 1rem;
+}
+
+form label {
+    width: 30%;
+}
+
+form input[type=text], form input[type=password] {
+    flex-grow: 1;
+}
+
+input[type=text], input[type=password] {
+    font-size: 15px;
+
+    padding: 0 0.2rem;
+    height: 1.5rem;
+ 
+    appearance: none;
+    outline: none;
+
+    border: 2px solid black;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+    background: #e0e0e0;
+}
+
+button, input[type=submit] {
+    font-size: 17px;
+    font-family: var(--font-title);
+
+    padding: 0 2rem;
+    height: 1.5rem;
+
+    background: white;
+    border: 2px solid black;
+
+    cursor: pointer;
+}
+
+button:hover, input[type=submit]:hover {
+    background: #e0e0e0;
+}
+
+/* Utils */
+
+.icons8 {
+    width: 25px;
+    height: 25px;
+
+    display: inline-block;
+    vertical-align: middle;
+}
+
+h2 .icons8 {
+    transform: translateY(-0.125rem);
+}
+
+.hfill {
+    flex-grow: 1;
 }
