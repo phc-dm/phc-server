@@ -1,0 +1,3 @@
+[submodule "content-poisson"]
+	path = content-poisson
+	url = https://github.com/phc-dm/content-poisson
