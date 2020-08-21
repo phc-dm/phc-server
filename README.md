@@ -1,6 +1,6 @@
 # Nuovo Sito Poisson
 
-Documentazione principale è raccolta in [un altro repository](https://github.com/phc-dm/documentazione/progetti/server-poisson/README.md).
+Documentazione principale è raccolta in [un altro repository](https://github.com/phc-dm/documentazione/blob/master/progetti/server-poisson/README.md).
 
 ## Development
 
