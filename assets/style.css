@@ -94,7 +94,66 @@ nav {
     font-size: 130%;
     font-weight: bold;
 
-    border: 2px solid;
+    border: 2px solid black;
+}
+
+.nav-dropdown {
+    flex-grow: 1;
+    margin: -2px;
+
+    max-width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    z-index: 1;
+}
+
+.nav-dropdown .label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+
+    height: 2.5rem;
+
+    padding: 0 0.75rem;
+
+    font-size: 130%;
+    font-weight: bold;
+
+    border: 2px solid black;
+}
+
+.nav-dropdown .label .icons8 {
+    width: 16px;
+    height: 16px;
+
+    margin-left: 0.5rem;
+    transform: translate(0, 0.1rem);
+}
+
+.nav-dropdown .dropdown {
+    position: absolute;
+
+    top: 100%;
+    width: 100%;
+    /* margin-bottom: 0.5rem; */
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 2px;
+
+    border: 2px solid black;
+
+    background: white;
+}
+
+.nav-dropdown:not(:hover) .dropdown {
+    display: none;
 }
 
 nav a {
@@ -177,7 +236,7 @@ header .title h1 {
 
     padding: 0.125rem 0.25rem;
 
-    border: 2px solid;
+    border: 2px solid black;
 }
 
 .user h4 {
@@ -214,6 +273,10 @@ footer {
     color: white;
 
     border-bottom: none;
+}
+
+footer a, footer a:visited {
+    color: white;
 }
 
 .footer-item {
@@ -367,6 +430,7 @@ h2 .icons8 {
 }
 
 .hfill {
+    /* min-height: 0.5rem; */
     flex-grow: 1000;
 }
 
@@ -382,6 +446,40 @@ h2 .icons8 {
         border-left: none;
         border-right: none;
     }
+}
 
+/* Large screen */
+@media screen and (min-width: 421px) {
+    .nav-dropdown .dropdown {
+        margin-top: -2px;
+    }
+}
 
+/* Mobile screen */
+@media screen and (max-width: 420px) and (orientation: portrait) {
+    nav {
+        flex-direction: column;
+    }
+
+    .nav-dropdown:hover {
+        padding: 0 0.25rem 0.25rem;
+    }
+
+    .nav-dropdown, .nav-dropdown .nav-item {
+        margin: -2px 0;
+    }
+
+    .nav-item, .nav-dropdown .label {
+        max-width: 100%;
+ 
+        border-left: none;
+        border-right: none;
+    }
+
+    .nav-dropdown .dropdown {
+        position: relative;
+        
+        border: 4px solid black;
+        border-top-width: 2px;
+    }
 }
