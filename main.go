@@ -6,13 +6,12 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
-	"github.com/phc-dm/server-poisson/utils"
+	"github.com/phc-dm/server-poisson/config"
+	"github.com/phc-dm/server-poisson/util"
 )
 
-type object map[string]interface{}
-
 func main() {
-	config.LoadConfig()
+	config.Load()
 
 	r := chi.NewRouter()
 
@@ -25,11 +24,11 @@ func main() {
 	r.Handle("/blog/*", http.StripPrefix("/blog", http.FileServer(http.Dir("./blog/public"))))
 
 	// Templates & Renderer
-	renderer := utils.NewTemplateRenderer("base.html")
+	renderer := NewTemplateRenderer("base.html")
 
 	// Routes
 	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
-		err := renderer.Render(w, "home.html", object{})
+		err := renderer.Render(w, "home.html", util.H{})
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
@@ -37,7 +36,7 @@ func main() {
 	})
 
 	r.Get("/utenti", func(w http.ResponseWriter, r *http.Request) {
-		err := renderer.Render(w, "utenti.html", object{})
+		err := renderer.Render(w, "utenti.html", util.H{})
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
@@ -45,13 +44,13 @@ func main() {
 	})
 
 	r.Get("/login", func(w http.ResponseWriter, r *http.Request) {
-		err := renderer.Render(w, "login.html", object{})
+		err := renderer.Render(w, "login.html", util.H{})
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
 	})
 
-	log.Printf(`Starting server...`)
-	http.ListenAndServe(Config.Host, r)
+	log.Printf(`Starting server on %v...`, config.Host)
+	http.ListenAndServe(config.Host, r)
 }

@@ -6,6 +6,7 @@ import (
 	"strings"
 
 	"github.com/joho/godotenv"
+	"github.com/phc-dm/server-poisson/util"
 )
 
 var Mode string
@@ -22,7 +23,7 @@ func stringOrDefault(value, defaultValue string) string {
 	return value
 }
 
-func LoadConfig() {
+func Load() {
 	godotenv.Load()
 
 	log.SetFlags(log.Ldate | log.Ltime | log.Lshortfile)
@@ -38,4 +39,13 @@ func LoadConfig() {
 
 	ForumUrl = stringOrDefault(os.Getenv("FORUM_URL"), "forum.phc.dm.unipi.it")
 	log.Printf("FORUM_URL = %v", ForumUrl)
+}
+
+func Object() util.H {
+	return util.H{
+		"Mode":     Mode,
+		"Host":     Host,
+		"GitUrl":   GitUrl,
+		"ForumUrl": ForumUrl,
+	}
 }

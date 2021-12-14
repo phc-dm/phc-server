@@ -1,10 +1,11 @@
-package utils
+package main
 
 import (
 	"io"
 	"text/template"
 
 	"github.com/phc-dm/server-poisson/config"
+	"github.com/phc-dm/server-poisson/util"
 )
 
 // TemplateRenderer holds cached templates for rendering
@@ -24,12 +25,10 @@ func NewTemplateRenderer(baseFile string) *TemplateRenderer {
 }
 
 // Render the template
-func (t *TemplateRenderer) Render(w io.Writer, name string, data interface{}) error {
+func (t *TemplateRenderer) Render(w io.Writer, name string, data util.H) error {
 	tmpl := t.templateMap[name]
 
 	if config.Mode == "development" || tmpl == nil {
-		tmpl = template.Must(t.baseTemplate.Clone())
-
 		if config.Mode == "development" {
 			tmpl = template.Must(template.ParseFiles("./views/" + t.baseFile))
 		} else {
@@ -40,5 +39,9 @@ func (t *TemplateRenderer) Render(w io.Writer, name string, data interface{}) er
 		t.templateMap[name] = tmpl
 	}
 
-	return tmpl.ExecuteTemplate(w, "base", data)
+	newData := util.H{}
+	newData.Apply(data)
+	newData["Config"] = config.Object()
+
+	return tmpl.ExecuteTemplate(w, "base", newData)
 }

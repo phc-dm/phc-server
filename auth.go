@@ -1,7 +1,5 @@
 package main
 
-// "github.com/phc-dm/auth-poisson/user"
-
 // AuthService rappresenta un servizio di autenticazione
 // type AuthService interface {
 // 	GetUsers() []User
