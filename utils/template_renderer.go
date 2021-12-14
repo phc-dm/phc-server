@@ -4,8 +4,6 @@ import (
 	"io"
 	"os"
 	"text/template"
-
-	"github.com/labstack/echo/v4"
 )
 
 // TemplateRenderer holds cached templates for rendering
@@ -23,18 +21,14 @@ func NewTemplateRenderer(baseFile string) *TemplateRenderer {
 }
 
 // Render the template
-func (t *TemplateRenderer) Render(w io.Writer, name string, data interface{}, c echo.Context) error {
+func (t *TemplateRenderer) Render(w io.Writer, name string, data interface{}) error {
 	tmpl := t.templateMap[name]
+
 	if os.Getenv("MODE") == "development" || tmpl == nil {
 		tmpl = template.Must(t.baseTemplate.Clone())
 		tmpl.ParseFiles("./views/" + name)
 		t.templateMap[name] = tmpl
 	}
-
-	// // Add global methods if data is a map
-	// if viewContext, isMap := data.(map[string]interface{}); isMap {
-	// 	viewContext["reverse"] = c.Echo().Reverse
-	// }
 
 	return tmpl.ExecuteTemplate(w, "base", data)
 }

@@ -3,58 +3,55 @@ package main
 import (
 	"log"
 	"net/http"
-	"os"
-	"strconv"
 
 	"git.phc.dm.xxxxx.xx/server-poisson/utils"
-	"github.com/labstack/echo/v4"
-	"github.com/labstack/echo/v4/middleware"
+	"github.com/go-chi/chi/v5"
+	"github.com/go-chi/chi/v5/middleware"
 )
 
 type object map[string]interface{}
 
-func init() {
-
-	log.SetFlags(log.Ldate | log.Ltime | log.Lshortfile)
-
-	log.Printf("MODE = %v (default: production)", os.Getenv("MODE"))
-	log.Printf("PORT = %v (default: 8000)", os.Getenv("PORT"))
-
-}
-
 func main() {
-	// Echo instance
-	e := echo.New()
+	config := LoadConfig()
+
+	r := chi.NewRouter()
 
 	// Middleware
-	e.Use(middleware.Logger())
-	e.Use(middleware.Recover())
-
-	// Templates & Renderer
-	e.Renderer = utils.NewTemplateRenderer("base.html")
+	r.Use(middleware.Logger)
+	r.Use(middleware.Recoverer)
 
 	// Static assets
-	e.Static("/assets", "./assets")
-	e.Static("/blog", "./blog/public")
+	r.Handle("/assets/*", http.StripPrefix("/assets", http.FileServer(http.Dir("./assets"))))
+	r.Handle("/blog/*", http.StripPrefix("/blog", http.FileServer(http.Dir("./blog/public"))))
+
+	// Templates & Renderer
+	renderer := utils.NewTemplateRenderer("base.html")
 
 	// Routes
-	e.GET("/", func(c echo.Context) error {
-		return c.Render(http.StatusOK, "home.html", object{})
-	})
-	e.GET("/utenti", func(c echo.Context) error {
-		return c.Render(http.StatusOK, "utenti.html", object{})
-	})
-	e.GET("/login", func(c echo.Context) error {
-		return c.Render(http.StatusOK, "login.html", object{})
+	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
+		err := renderer.Render(w, "home.html", object{"Config": config})
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
 	})
 
-	port, ok := strconv.Atoi(os.Getenv("PORT"))
-	if ok != nil {
-		port = 8000
-	}
+	r.Get("/utenti", func(w http.ResponseWriter, r *http.Request) {
+		err := renderer.Render(w, "utenti.html", object{"Config": config})
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+	})
 
-	log.Print(port)
+	r.Get("/login", func(w http.ResponseWriter, r *http.Request) {
+		err := renderer.Render(w, "login.html", object{"Config": config})
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+	})
 
-	// Start server
-	e.Logger.Fatal(e.Start(":" + strconv.Itoa(port)))
+	log.Printf(`Starting server...`)
+	http.ListenAndServe(config.Host, r)
 }

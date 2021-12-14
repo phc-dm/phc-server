@@ -1,13 +1,12 @@
 # Nuovo Sito Poisson
 
-Documentazione principale è raccolta in [un altro repository](https://github.com/phc-dm/documentazione/blob/master/progetti/server-poisson/README.md).
+Repo del server del nuovo sito per il PHC.
 
 ## Development
 
-Usare il comando `MODE=development go run main.go` per lanciare il server su `localhost:8000`.
+Copiare il file `.env.dev` in `.env` per dire al server di lavorare in modalità di development e su quale indirizzo servire il sito. Per avviare il server basta fare
 
-## Materiale
-
-```css
-@import url('https://fonts.googleapis.com/css2?family=Share:wght@700&family=Ubuntu+Mono&family=Ubuntu:wght@300;700&display=swap');
 ```
+go run .
+```
+
