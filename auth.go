@@ -1,26 +1,16 @@
 package main
 
-// User as in auth-poisson
-type User struct {
-	Username string
-	UID      int
-
-	Name     string
-	Surname  string
-	FullName string
-
-	// ...
-}
+// "github.com/phc-dm/auth-poisson/user"
 
 // AuthService rappresenta un servizio di autenticazione
-type AuthService interface {
-	GetUsers() []User
+// type AuthService interface {
+// 	GetUsers() []User
 
-	GetUser(username string) User
+// 	GetUser(username string) User
 
-	// LoginUser if successful returns the token for this user that will be stored in an HTTP cookie.
-	LoginUser(username, password string) (string, error)
-}
+// 	// LoginUser if successful returns the token for this user that will be stored in an HTTP cookie.
+// 	LoginUser(username, password string) (string, error)
+// }
 
 // LdapService ...
 type LdapService struct {

@@ -3,28 +3,62 @@
 {{define "title"}}PHC &bull; Utenti &bull; phc.dm.xxxxx.xx{{end}}
 
 {{define "body"}}
-<h1>Utenti</h1>
 
-<ul>
-    <li>Persona 1</li>
-    <li>Persona 2</li>
-    <li>Persona 3</li>
-    <li>Persona 4</li>
-    <li>Persona 5</li>
-    <li>Persona 6</li>
-    <li>Persona 7</li>
-    <li>Persona 8</li>
-    <li>Persona 9</li>
-    <li>Persona 10</li>
-    <li>Persona 11</li>
-    <li>Persona 12</li>
-    <li>Persona 13</li>
-    <li>Persona 14</li>
-    <li>Persona 15</li>
-    <li>Persona 16</li>
-    <li>Persona 17</li>
-    <li>Persona 18</li>
-    <li>Persona 19</li>
-    <li>Persona 20</li>
-</ul>
+<section>
+    <h2>
+        <img class="icons8" src="https://img.icons8.com/ios-filled/50/000000/find-user-male.png" />
+        Utenti
+    </h2>
+
+    <p>
+        Questa è la lista di tutti gli utenti con un account su Poisson. Scrivi nome, cognome o username di un utente
+        per filtrare la lista in tempo reale.
+    </p>
+
+    <div class="search">
+        <input type="text" id="search-field" placeholder="Cerca...">
+        <img class="icons8" src="https://img.icons8.com/ios-filled/50/000000/search.png" />
+    </div>
+
+    <div class="user-list">
+        <!-- Dummy data -->
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', ({ }) => {
+        const $userList = document.querySelector('.user-list');
+        const $user = document.createElement('div');
+        $user.innerHTML = `
+            <div class="user">
+                <div class="contact">
+                    <h3 class="fullname"></h3>
+                    <h4 class="username"></h4>
+                </div>
+                <div class="links">
+                    <a href="#">
+                        <img class="icons8" src="https://img.icons8.com/ios-filled/50/000000/web.png" />
+                    </a>
+                    <a href="#">
+                        <img class="icons8" src="https://img.icons8.com/ios-filled/50/000000/git.png" />
+                    </a>
+                </div>
+            </div>
+        `;
+        
+        // Per mostrare che la pagina regge molti utenti senza laggare troppo
+        Array(1400).fill(0).map(({ }, i) => {
+            setTimeout(() => {
+                // Pare che questa riga sia la più dispendiosa
+                const $newUser = $user.cloneNode(true);
+
+                $newUser.querySelector('.fullname').innerHTML = `Persona ${i + 1}`;
+                $newUser.querySelector('.username').innerHTML = `persona${i + 1}`;
+                
+                $userList.appendChild($newUser.firstElementChild);
+            }, 0)
+        });
+    })
+</script>
+
 {{end}}

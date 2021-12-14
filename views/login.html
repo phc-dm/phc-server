@@ -3,24 +3,36 @@
 {{define "title"}}PHC &bull; Accedi &bull; phc.dm.xxxxx.xx{{end}}
 
 {{define "body"}}
-<h1>Login</h1>
-<p>Inserisci le tue credenziali di Poisson per accedere</p>
 
 <form action="/login" method="post">
+    
+    <h2>
+        <img class="icons8" src="https://img.icons8.com/ios-filled/50/000000/lock.png"/>
+        Accedi
+    </h2>
+    
+    <p>
+        Inserisci le tue credenziali di Poisson per accedere.
+    </p>
+
+    <p>
+        Per il recupero credenziali vieni direttamente al PHC per parlarne con calma o inviaci una mail.
+    </p>
+
     <div class="row">
         <label for="login-username">Username:</label>
         <input type="text" name="username" id="login-username">    
     </div>
     <div class="row">
         <label for="login-password">Password:</label>
-        <input type="text" name="password" id="login-password">
+        <input type="password" name="password" id="login-password">
     </div>
-    <input type="submit" value="Accedi">
+    <div class="row">
+        <div class="hfill"></div>
+        <input type="submit" value="Accedi">
+        <!-- <div class="hfill"></div> -->
+    </div>
 
 </form>
-
-<p title="Vieni al phc per parlarne con calma o inviaci una mail">
-    🛈 Recupero credenziali
-</p>
 
 {{end}}

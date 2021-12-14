@@ -4,15 +4,15 @@ import (
 	"log"
 	"net/http"
 
-	"git.phc.dm.xxxxx.xx/server-poisson/utils"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
+	"github.com/phc-dm/server-poisson/utils"
 )
 
 type object map[string]interface{}
 
 func main() {
-	config := LoadConfig()
+	config.LoadConfig()
 
 	r := chi.NewRouter()
 
@@ -29,7 +29,7 @@ func main() {
 
 	// Routes
 	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
-		err := renderer.Render(w, "home.html", object{"Config": config})
+		err := renderer.Render(w, "home.html", object{})
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
@@ -37,7 +37,7 @@ func main() {
 	})
 
 	r.Get("/utenti", func(w http.ResponseWriter, r *http.Request) {
-		err := renderer.Render(w, "utenti.html", object{"Config": config})
+		err := renderer.Render(w, "utenti.html", object{})
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
@@ -45,7 +45,7 @@ func main() {
 	})
 
 	r.Get("/login", func(w http.ResponseWriter, r *http.Request) {
-		err := renderer.Render(w, "login.html", object{"Config": config})
+		err := renderer.Render(w, "login.html", object{})
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
@@ -53,5 +53,5 @@ func main() {
 	})
 
 	log.Printf(`Starting server...`)
-	http.ListenAndServe(config.Host, r)
+	http.ListenAndServe(Config.Host, r)
 }
