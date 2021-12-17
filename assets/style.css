@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap');
 
 :root {
-    --bg: #f0f0f0;
+    --bg: #eaeaea;
     --fg: #333;
 
     /* --bg-dark: #e0e0d6;
@@ -10,6 +10,7 @@
 
     --bg-dark: hsl(220, 5%, 93%);
     --bg-darker: hsl(220, 5%, 90%);
+    --bg-darker-2: #dadada;
 
     --accent-1: #278542;
     --accent-1-fg: #154d24;
@@ -101,7 +102,7 @@ nav .nav-logo {
     
     background: var(--bg-dark);
     border-radius: 4px;
-    border: 1px solid #dadada;
+    border: 1px solid var(--bg-darker-2);
     box-shadow: var(--shadow-1);
 }
 
@@ -111,7 +112,7 @@ nav .nav-main {
 
     background: var(--bg-dark);
     border-radius: 4px;
-    border: 1px solid #dadada;
+    border: 1px solid var(--bg-darker-2);
     box-shadow: var(--shadow-1);
 
 
@@ -176,7 +177,7 @@ nav .nav-main .nav-item.dropdown .nav-items {
     
     background: var(--bg-dark);
     border-radius: 4px;
-    border: 1px solid #dadada;
+    border: 1px solid var(--bg-darker-2);
     box-shadow: var(--shadow-1);
 
 }
@@ -220,7 +221,7 @@ footer {
 
     background: var(--bg-dark);
     border-radius: 4px;
-    border: 1px solid #dadada;
+    border: 1px solid var(--bg-darker-2);
     border-bottom: none;
     box-shadow: var(--shadow-1);
 
@@ -253,7 +254,7 @@ section {
 .card {
     background: var(--bg-dark);
     border-radius: 4px;
-    border: 1px solid #dadada;
+    border: 1px solid var(--bg-darker-2);
     box-shadow: var(--shadow-1);
 
     max-width: 60ch;
