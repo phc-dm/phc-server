@@ -34,10 +34,10 @@ func Load() {
 	Host = stringOrDefault(os.Getenv("HOST"), "localhost:8080")
 	log.Printf("HOST = %v", Host)
 
-	GitUrl = stringOrDefault(os.Getenv("GIT_URL"), "git.phc.dm.unipi.it")
+	GitUrl = stringOrDefault(os.Getenv("GIT_URL"), "https://git.phc.dm.unipi.it")
 	log.Printf("GIT_URL = %v", GitUrl)
 
-	ForumUrl = stringOrDefault(os.Getenv("FORUM_URL"), "forum.phc.dm.unipi.it")
+	ForumUrl = stringOrDefault(os.Getenv("FORUM_URL"), "https://forum.phc.dm.unipi.it")
 	log.Printf("FORUM_URL = %v", ForumUrl)
 }
 
