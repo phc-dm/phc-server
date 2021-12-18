@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
         integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
 
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"
         integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js"
@@ -30,19 +29,33 @@
                 ]
             });
         });
-	<!-- [> WIP: Dark Mode <]
-	   - document.documentElement.classList.toggle(
-	   -   'dark',
-	   -   localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
-	   - );
-	   - document.addEventListener('DOMContentLoaded', () =>
-	   -   document.querySelectorAll('[toggle-dark-mode]').forEach((item) =>
-	   -     item.addEventListener('click', () => {
-	   -       localStorage.setItem('theme', localStorage.theme == 'dark' ? 'light' : 'dark');
-	   -       document.documentElement.classList.toggle('dark');
-	   -     })
-	   -   )
-           - );  -->
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const $toggle = document.querySelector('#toggle-dark-mode');
+            const $toggleIcon = document.querySelector('#toggle-dark-mode i');            
+
+            // Loads prefered dark from from localStorage or default to media query.
+            let prefersDarkMode = localStorage.getItem('theme') === 'dark'
+                || window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            function storePrefersDarkMode(mode) {
+                prefersDarkMode = mode;
+                localStorage.setItem('theme', mode ? 'dark' : 'light');
+            }
+
+            function displayToggle() {
+                document.body.classList.toggle('dark-mode', prefersDarkMode);
+                $toggleIcon.classList.toggle('fa-moon', prefersDarkMode);
+                $toggleIcon.classList.toggle('fa-sun', !prefersDarkMode);
+            }
+
+            $toggle.addEventListener('click', () => {
+                storePrefersDarkMode(!prefersDarkMode);
+                displayToggle();
+            });
+
+            displayToggle();
+        });
     </script>
 
 
@@ -53,57 +66,67 @@
     <nav>
         <!-- Site -->
         <div class="nav-logo">
-            <a href="/">
-                <img src="assets/images/logo-circuit-board@100w.png" alt="phc-logo">
+            <a class="nav-element" href="/">
+                <img src="assets/images/logo-circuit-board.svg" alt="phc-logo">
             </a>
         </div>
         <div class="nav-main">
             <div class="nav-item">
-                <a href="/utenti">Utenti</a>
+                <a class="nav-element" href="/utenti">Utenti</a>
             </div>
             <div class="nav-item">
-                <a href="/news">News</a>
+                <a class="nav-element" href="/news">News</a>
             </div>
             <div class="nav-item dropdown">
                 <div class="name">
-                    <a href="/progetti">
-                        Progetti
+                    <a class="nav-element" href="/progetti">
+                        <div class="icon">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="label">
+                            Progetti
+                        </div>
                     </a>
                 </div>
                 <div class="nav-items">
                     <div class="nav-item">
-                        <a href="{{ .Config.GitUrl }}">Gitea</a>
+                        <a class="nav-element" href="{{ .Config.GitUrl }}">Gitea</a>
                     </div>
                     <div class="nav-item">
-                        <a href="{{ .Config.ForumUrl }}">Zulip</a>
+                        <a class="nav-element" href="{{ .Config.ForumUrl }}">Zulip</a>
                     </div>
                     <div class="nav-item">
-                        <a href="/guide">Guide</a>
+                        <a class="nav-element" href="/guide">Guide</a>
                     </div>
                     <div class="nav-item">
-                        <a href="/seminari">Seminari</a>
+                        <a class="nav-element" href="/seminari">Seminari</a>
                     </div>
                 </div>
             </div>
             <div class="nav-item">
-                <a href="/storia">Storia</a>
+                <a class="nav-element" href="/storia">Storia</a>
             </div>
             <div class="nav-item">
-                <a href="/about">About</a>
+                <a class="nav-element" href="/about">About</a>
             </div>
-            <!-- User -->
+
+            <div class="nav-item filler"></div>
+
+            <!-- User Related -->
+            <div class="nav-item">
+                <div id="toggle-dark-mode" class="nav-button">
+                    <i class="fas fa-moon"></i>
+                </div>
+            </div>
             {{if .User}}
             <div class="nav-item">
-                <a href="/profile">@{{ .User }}</a>
+                <a class="nav-element" href="/profile">@{{ .User }}</a>
             </div>
             {{else}}
             <div class="nav-item">
-                <a href="/login">Accedi</a>
+                <a class="nav-element" href="/login">Accedi</a>
             </div>
             {{end}}
-            <div class="nav-item toggle-dark-mode">
-                <a href=""><i class="fa-moon"></i></a>
-            </div>
         </div>
     </nav>
 
