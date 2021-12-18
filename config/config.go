@@ -14,13 +14,16 @@ var Host string
 
 var GitUrl string
 var ForumUrl string
+var Email string
 
-func stringOrDefault(value, defaultValue string) string {
+func loadEnv(target *string, name, defaultValue string) {
+	value := os.Getenv(name)
 	if len(strings.TrimSpace(value)) == 0 {
-		return defaultValue
+		*target = defaultValue
+	} else {
+		*target = value
 	}
-
-	return value
+	log.Printf("%s = %v", name, *target)
 }
 
 func Load() {
@@ -28,17 +31,11 @@ func Load() {
 
 	log.SetFlags(log.Ldate | log.Ltime | log.Lshortfile)
 
-	Mode = stringOrDefault(os.Getenv("MODE"), "production")
-	log.Printf("MODE = %v", Mode)
-
-	Host = stringOrDefault(os.Getenv("HOST"), "localhost:8080")
-	log.Printf("HOST = %v", Host)
-
-	GitUrl = stringOrDefault(os.Getenv("GIT_URL"), "https://git.phc.dm.unipi.it")
-	log.Printf("GIT_URL = %v", GitUrl)
-
-	ForumUrl = stringOrDefault(os.Getenv("FORUM_URL"), "https://forum.phc.dm.unipi.it")
-	log.Printf("FORUM_URL = %v", ForumUrl)
+	loadEnv(&Mode, "MODE", "production")
+	loadEnv(&Host, "HOST", "localhost:8080")
+	loadEnv(&GitUrl, "GIT_URL", "https://git.example.org")
+	loadEnv(&ForumUrl, "FORUM_URL", "https://forum.example.org")
+	loadEnv(&Email, "EMAIL", "mail@example.org")
 }
 
 func Object() util.H {
@@ -47,5 +44,6 @@ func Object() util.H {
 		"Host":     Host,
 		"GitUrl":   GitUrl,
 		"ForumUrl": ForumUrl,
+		"Email":    Email,
 	}
 }
