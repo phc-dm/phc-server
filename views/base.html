@@ -34,9 +34,8 @@
             const $toggle = document.querySelector('#toggle-dark-mode');
             const $toggleIcon = document.querySelector('#toggle-dark-mode i');            
 
-            // Loads prefered dark from from localStorage or default to media query.
-            let prefersDarkMode = localStorage.getItem('theme') === 'dark'
-                || window.matchMedia('(prefers-color-scheme: dark)').matches;
+            // Loads prefered dark from from localStorage or defaults to media query.
+            let prefersDarkMode = localStorage.getItem('theme') !== undefined ? localStorage.getItem('theme') === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
             
             function storePrefersDarkMode(mode) {
                 prefersDarkMode = mode;
