@@ -24,29 +24,6 @@
     --shadow-1: 0 0 16px 0 #00000018;
 }
 
-body.dark-mode {
-    --bg: #282828;
-    --fg: #6eac4d;
-
-    --bg-dark: hsl(10, 10%, 20%);
-    --bg-darker: hsl(10, 10%, 17%);
-    --bg-darker-2: #1d2021;
-
-    --accent-1: #154d24;
-    --accent-1-fg: #278542;
-
-    --card-date: #928374;
-    --card-content: #d4be98;
-
-    --font-sf: 'Inter', sans-serif;
-    --font-weight-light: 300;
-    --font-weight-normal: 400;
-    --font-weight-medium: 500;
-    --font-weight-bold: 700;
-
-    --shadow-1: 0 0 16px 0 #16182077;
-}
-
 * {
             box-sizing: border-box;
 }
@@ -85,11 +62,12 @@ body {
 nav {
     margin: 1rem 0;
 
-    display: grid;
-    grid-template-columns: auto 1fr;
+    display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
 
     align-items: center;
+    justify-content: center;
     font-weight: var(--font-weight-medium);
 
     color: var(--accent-1-fg);
@@ -131,6 +109,7 @@ nav .nav-logo {
 
 nav .nav-logo img {
     width: 150px;
+    filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));
 }
 
 nav .nav-main {
@@ -354,3 +333,8 @@ a:hover {
     text-decoration: underline;
 }
 
+/* Responsiveness */
+
+@media screen and (max-width: 950px) {
+    
+}
