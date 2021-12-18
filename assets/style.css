@@ -28,17 +28,17 @@
             box-sizing: border-box;
 }
 
+
 html, body {
     margin: 0;
+}
+
+html {
+    height: 100%;
     width: 100%;
-    height: fit-content;
 }
 
 body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
     background: var(--bg);
     color: var(--fg);
 
@@ -46,21 +46,28 @@ body {
     font-size: 17px;
     font-weight: var(--font-weight-normal);
 
+    width: 100%;
+    min-height: 100%;
+
     position: relative;
 }
 
 .main {
     max-width: 70ch;
-    margin: 0 auto 8rem;
+    margin: 0 auto;
+    padding-bottom: 8rem;
 
     display: flex;
     flex-direction: column;
+    
+    align-items: center;
+    justify-content: center;
 
     gap: 3rem;
 }
 
 nav {
-    margin: 1rem 0;
+    padding: 1rem 0;
 
     display: flex;
     flex-wrap: wrap;
@@ -71,8 +78,6 @@ nav {
     font-weight: var(--font-weight-medium);
 
     color: var(--accent-1-fg);
-
-    z-index: 0;
 }
 
 /* Tutti i link dentro la navbar sono speciali e non sembrano link */
@@ -121,7 +126,7 @@ nav .nav-main {
     border: 1px solid var(--bg-darker-2);
     box-shadow: var(--shadow-1);
 
-    z-index: -1;
+    z-index: 0;
 }
 
 nav .nav-item.filler {
@@ -185,7 +190,7 @@ nav .nav-main .nav-item.dropdown .name {
 
     background: var(--bg-dark);
 
-    z-index: 10;
+    z-index: 3;
 }
 
 nav .nav-main .nav-item.dropdown .name:hover {
