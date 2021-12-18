@@ -5,15 +5,15 @@
     --bg: #eaeaea;
     --fg: #333;
 
-    /* --bg-dark: #e0e0d6;
-    --bg-darker: #d6d6cc; */
-
     --bg-dark: hsl(220, 5%, 93%);
     --bg-darker: hsl(220, 5%, 90%);
     --bg-darker-2: #dadada;
 
     --accent-1: #278542;
     --accent-1-fg: #154d24;
+
+    --card-date: #666;
+    --card-content: #222;
 
     --font-sf: 'Inter', sans-serif;
     --font-weight-light: 300;
@@ -22,6 +22,29 @@
     --font-weight-bold: 700;
 
     --shadow-1: 0 0 16px 0 #00000018;
+}
+
+html.dark{
+    --bg: #282828;
+    --fg: #579f31;
+
+    --bg-dark: hsl(10, 10%, 20%);
+    --bg-darker: hsl(10, 10%, 17%);
+    --bg-darker-2: #1d2021;
+
+    --accent-1: #154d24;
+    --accent-1-fg: #278542;
+
+    --card-date: #928374;
+    --card-content: #d4be98;
+
+    --font-sf: 'Inter', sans-serif;
+    --font-weight-light: 300;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 700;
+
+    --shadow-1: 0 0 16px 0 #16182077;
 }
 
 * {
@@ -94,12 +117,12 @@ nav a:hover {
 
 nav .nav-logo {
     /* height: 3.5rem; */
-    
+
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0.5rem;
-    
+
     background: var(--bg-dark);
     border-radius: 4px;
     border: 1px solid var(--bg-darker-2);
@@ -159,7 +182,7 @@ nav .nav-main .nav-item.dropdown .name {
     justify-content: center;
 
     background: var(--bg-dark);
-    
+
     z-index: 10;
 }
 
@@ -174,14 +197,14 @@ nav .nav-main .nav-item.dropdown .nav-items {
 
     display: none;
 
-    
+
     background: var(--bg-dark);
     border-radius: 4px;
     border: 1px solid var(--bg-darker-2);
     box-shadow: var(--shadow-1);
 
 }
-/* 
+/*
 nav .nav-main .nav-item.dropdown .nav-items::before {
     position: absolute;
     content: '';
@@ -272,14 +295,14 @@ section {
 
 .card .date {
     font-size: 15px;
-    color: #666;
+    color: var(--card-date);
 
     margin-bottom: 0.75rem;
 }
 
 .card .description {
     font-weight: var(--font-weight-light);
-    color: #222;
+    color: var(--card-content);
 }
 
 /* Typography */
