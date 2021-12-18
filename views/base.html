@@ -32,11 +32,11 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             const $toggle = document.querySelector('#toggle-dark-mode');
-            const $toggleIcon = document.querySelector('#toggle-dark-mode i');            
+            const $toggleIcon = document.querySelector('#toggle-dark-mode i');
 
             // Loads prefered dark from from localStorage or defaults to media query.
             let prefersDarkMode = localStorage.getItem('theme') !== undefined ? localStorage.getItem('theme') === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
-            
+
             function storePrefersDarkMode(mode) {
                 prefersDarkMode = mode;
                 localStorage.setItem('theme', mode ? 'dark' : 'light');
@@ -73,9 +73,6 @@
             <div class="nav-item">
                 <a class="nav-element" href="/utenti">Utenti</a>
             </div>
-            <div class="nav-item">
-                <a class="nav-element" href="/news">News</a>
-            </div>
             <div class="nav-item dropdown">
                 <div class="name">
                     <a class="nav-element" href="/progetti">
@@ -95,10 +92,30 @@
                         <a class="nav-element" href="{{ .Config.ForumUrl }}">Zulip</a>
                     </div>
                     <div class="nav-item">
+                        <a class="nav-element" href="/seminari">Seminari</a>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item dropdown">
+                <div class="name">
+                    <a class="nav-element" href="/risorse">
+                        <div class="icon">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="label">
+                            Risorse
+                        </div>
+                    </a>
+                </div>
+                <div class="nav-items">
+                    <div class="nav-item">
+                        <a class="nav-element" href="/news">News</a>
+                    </div>
+                    <div class="nav-item">
                         <a class="nav-element" href="/guide">Guide</a>
                     </div>
                     <div class="nav-item">
-                        <a class="nav-element" href="/seminari">Seminari</a>
+                        <a class="nav-element" href="/link">Link Utili</a>
                     </div>
                 </div>
             </div>
