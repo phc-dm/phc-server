@@ -355,6 +355,56 @@ a:hover {
 
 /* Pages */
 
+.page-home {
+    /* TODO: Sarebbe meglio se si riuscisse a capire come farlo senza */
+    overflow-x: hidden;
+}
+
 .page-home .nav-logo {
     display: none;
+}
+
+.page-home .super {
+    position: absolute;
+    left: 50vw;
+    top: 50vh;
+
+    width: 90vw;
+
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 2rem;
+}
+
+.page-home .super .block.text {
+    max-width: 40ch;
+    font-size: 2.5vmin;
+}
+
+.page-home .super .block.text h1 {
+    font-weight: var(--font-weight-medium);
+}
+
+.page-home .super .block.text p {
+    font-weight: var(--font-weight-light);
+}
+
+.page-home .super .block.image {
+    max-width: 80ch;
+}
+
+.page-home .super .block.image img {
+    width: 100%;
+    filter: drop-shadow(0 0 64px rgba(0, 0, 0, 0.2)) drop-shadow(0 0 8px rgba(0, 0, 0, 0.35));
+}
+
+.page-home .main {
+    padding-top: calc(100vh - 6rem);
 }
