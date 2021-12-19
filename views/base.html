@@ -61,7 +61,7 @@
     <link rel="stylesheet" href="/assets/theme-dark.css">
 </head>
 
-<body>
+<body {{ if .Page.Name }}class="page-{{ .Page.Name }}"{{ end }}>
     <nav>
         <!-- Site -->
         <div class="nav-logo">
