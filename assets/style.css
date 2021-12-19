@@ -354,3 +354,9 @@ a:hover {
 @media screen and (max-width: 950px) {
     
 }
+
+/* Pages */
+
+.page-home .nav-logo {
+    display: none;
+}
