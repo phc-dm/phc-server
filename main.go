@@ -35,6 +35,14 @@ func main() {
 		}
 	})
 
+	r.Get("/link", func(w http.ResponseWriter, r *http.Request) {
+		err := renderer.Render(w, "link.html", util.H{})
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+	})
+
 	r.Get("/utenti", func(w http.ResponseWriter, r *http.Request) {
 		err := renderer.Render(w, "utenti.html", util.H{})
 		if err != nil {
