@@ -320,7 +320,6 @@ function render() {
   requestAnimationFrame(render);
 }
 
-
 // g.translate(0.5, 0.5);
 
 window.addEventListener('DOMContentLoaded', () => {
