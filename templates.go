@@ -2,6 +2,7 @@ package main
 
 import (
 	"io"
+	"strings"
 	"text/template"
 
 	"github.com/phc-dm/server-poisson/config"
@@ -41,6 +42,10 @@ func (t *TemplateRenderer) Render(w io.Writer, name string, data util.H) error {
 
 	newData := util.H{}
 	newData.Apply(data)
+	newData["Page"] = util.H{
+		// Used to inject a page specific class on <body>
+		"Name": strings.TrimSuffix(name, ".html"),
+	}
 	newData["Config"] = config.Object()
 
 	return tmpl.ExecuteTemplate(w, "base", newData)
