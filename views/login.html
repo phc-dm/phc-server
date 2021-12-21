@@ -3,31 +3,47 @@
 {{define "title"}}PHC &bull; Accedi &bull; phc.dm.xxxxx.xx{{end}}
 
 {{define "body"}}
+<section>
+    <h2>Account di Poisson</h2>
+    <div class="card-list">
+        <form class="card" action="/login" method="POST">
+            <div class="title">
+                <i class="fas fa-sign-in-alt"></i>
+                Accedi
+            </div>
+            <p>
+                Inserisci le tue credenziali di Poisson per accedere.
+            </p>
 
-<form action="/login" method="post">
-    <h2>
-        <i class="fas fa-sign-in-alt"></i>
-        Accedi
-    </h2>
+            <div class="field-set">
+                <label for="login-username">Username:</label>
+                <input type="text" name="username" id="login-username">
+                
+                <label for="login-password">Password:</label>
+                <input type="password" name="password" id="login-password">
+                
+                <button class="alone">Accedi</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<section>
+    <h2>Ottenere un account</h2>
     <p>
-        Inserisci le tue credenziali di Poisson per accedere.
+        Se vuoi ottenere un account compila* il <a href="#">modulo di richiesta</a> e portacelo in PHC o inviacelo via
+        email all'indirizzo <a href="mailto:{{ .Config.Email }}">{{ .Config.Email }}</a>.
     </p>
     <p>
-        Per il recupero credenziali vieni direttamente al PHC a parlarne con calma con noi altrimenti puoi inviaci una email all'indirizzo <a href="mailto:{{ .Config.Email }}">{{ .Config.Email }}</a>.
+        * In realtà ancora non esiste il modulo
     </p>
-    <div class="row">
-        <label for="login-username">Username:</label>
-        <input type="text" name="username" id="login-username">    
-    </div>
-    <div class="row">
-        <label for="login-password">Password:</label>
-        <input type="password" name="password" id="login-password">
-    </div>
-    <div class="row">
-        <div class="hfill"></div>
-        <input type="submit" value="Accedi">
-        <!-- <div class="hfill"></div> -->
-    </div>
-</form>
+</section>
 
+<section>
+    <h2>Recupero credenziali</h2>
+    <p>
+        Per il recupero credenziali vieni direttamente al PHC a parlarne con calma con noi altrimenti puoi inviaci una
+        email all'indirizzo <a href="mailto:{{ .Config.Email }}">{{ .Config.Email }}</a>.
+    </p>
+</section>
 {{end}}

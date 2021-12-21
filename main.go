@@ -19,8 +19,8 @@ func main() {
 	r.Use(middleware.Logger)
 	r.Use(middleware.Recoverer)
 
-	// Static assets
-	r.Handle("/assets/*", http.StripPrefix("/assets", http.FileServer(http.Dir("./assets"))))
+	// Static content
+	r.Handle("/public/*", http.StripPrefix("/public", http.FileServer(http.Dir("./public"))))
 	r.Handle("/blog/*", http.StripPrefix("/blog", http.FileServer(http.Dir("./blog/public"))))
 
 	// Templates & Renderer
