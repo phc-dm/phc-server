@@ -69,7 +69,7 @@ function updateCanvasDimensions() {
 
   $canvas.width = WIDTH * devicePixelRatio;
   $canvas.height = HEIGHT * devicePixelRatio;
-  g.scale(2, 2);
+  g.scale(devicePixelRatio, devicePixelRatio);
 }
 
 window.addEventListener('resize', () => updateCanvasDimensions());
@@ -326,7 +326,7 @@ function render() {
 window.addEventListener('DOMContentLoaded', () => {
   // $canvas.classList.remove('hide');
 
-  render();  
+  render();
 
   let i = 20;
   while (i > 0) {
