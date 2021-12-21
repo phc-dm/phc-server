@@ -51,6 +51,14 @@ func main() {
 		}
 	})
 
+	r.Get("/news", func(w http.ResponseWriter, r *http.Request) {
+		err := renderer.Render(w, "news.html", util.H{})
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+	})
+
 	r.Get("/login", func(w http.ResponseWriter, r *http.Request) {
 		err := renderer.Render(w, "login.html", util.H{})
 		if err != nil {
