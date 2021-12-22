@@ -1,11 +1,13 @@
 
 body.dark-mode {
     --bg: #282828;
-    --fg: #6eac4d;
+    --fg: #a6cc92;
+    /* --fg: #6eac4d; */
 
     --bg-dark: hsl(10, 10%, 20%);
     --bg-darker: hsl(10, 10%, 17%);
     --bg-darker-2: #1d2021;
+    --bg-darker-3: #101111;
 
     --accent-1: #154d24;
     --accent-1-fg: #278542;
@@ -20,6 +22,34 @@ body.dark-mode {
     --font-weight-bold: 700;
 
     --shadow-1: 0 0 16px 0 #16182077;
+    
+    --text-input-bg: var(--bg-darker);
+
+    --bg-darker-2-1: #c8c8c8;
+    --accent-2-lighter: #5cc969;
+    --accent-2: #4eaa59;
+    --accent-2-darker: #2e974c;
+    --accent-2-darkest: #002d0d;
+}
+
+.dark-mode button {
+    border: 1px solid var(--bg-darker-2);
+    background: var(--bg-darker);
+    color: #afafaf;
+}
+
+.dark-mode button:hover {
+    background: var(--bg-dark);
+}
+
+.dark-mode button.primary {
+    border: 1px solid #113a1c;
+    background: #1e6732;
+    color: #b7e3c3;
+}
+
+.dark-mode button.primary:hover {
+    background: #23773a;
 }
 
 .dark-mode nav .nav-logo img {

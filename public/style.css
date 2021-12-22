@@ -7,7 +7,9 @@
 
     --bg-dark: hsl(220, 5%, 93%);
     --bg-darker: hsl(220, 5%, 90%);
-    --bg-darker-2: #dadada;
+    --bg-darker-2: #d5d5d5;
+    --bg-darker-2-1: #c8c8c8;
+    --bg-darker-3: #c0c0c0;
 
     --accent-1: #278542;
     --accent-1-fg: #154d24;
@@ -22,6 +24,14 @@
     --font-weight-bold: 700;
 
     --shadow-1: 0 0 16px 0 #00000018;
+
+    --text-input-bg: #fff;
+
+    --bg-darker-2-1: #c8c8c8;
+    --accent-2-lighter: #5cc969;
+    --accent-2: #4eaa59;
+    --accent-2-darker: #2e974c;
+    --accent-2-darkest: #002d0d;
 }
 
 * {
@@ -352,49 +362,43 @@ a:hover {
 /* Buttons */
 
 button, .button {
-  font-family: var(--font-sf);
-  font-weight: var(--font-weight-medium);
-  font-size: 17px;
+    font-family: var(--font-sf);
+    font-weight: var(--font-weight-medium);
+    font-size: 17px;
+    
+    /* gray variant #b3b3b3 */
+    border: 1px solid var(--bg-darker-3);
+    /* gray variant #bfbfbf */
+    background: var(--bg-darker-2);
+    /* gray variant #333333 */
+    color: var(--fg);
 
-  background: #278542;
-  border: none;
-  height: 2rem;
-  padding: 0 1rem;
-  
-  border-right: 5px solid #ecc333;
-  position: relative;
-  
-  z-index: 2;
-  color: #111;
-  transition: all 100ms ease-in-out;
-  box-shadow: 0 0 0 0 transparent;
-  cursor: pointer;
+    height: 2rem;
+
+    border-radius: 4px;
+
+    padding: 0 1rem;
+
+    transition: all 100ms ease-in-out;
+    
+    box-shadow: 0 4px 8px 0 #00000022;
+
+    cursor: pointer;
 }
 
-button::before, .button::before {
-  position: absolute;
-  content: "";
-  top: -5px;
-  bottom: -5px;
-  background: #278542;
-  width: 100%;
-  left: 0;
-  z-index: -1;
-  border-radius: 2px;
-  transition: all 100ms ease-in-out;
-  -webkit-mask-image: radial-gradient(circle at top left, transparent 0, transparent 5px, black 6px), radial-gradient(circle at top right, transparent 0, transparent 5px, black 6px), radial-gradient(circle at bottom left, transparent 0, transparent 5px, black 6px), radial-gradient(circle at bottom right, transparent 0, transparent 5px, black 6px);
-  -webkit-mask-position: top left, top right, bottom left, bottom right;
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-size: 50% 50%;
-  mask-image: radial-gradient(circle at top left, transparent 0, transparent 5px, black 6px), radial-gradient(circle at top right, transparent 0, transparent 5px, black 6px), radial-gradient(circle at bottom left, transparent 0, transparent 5px, black 6px), radial-gradient(circle at bottom right, transparent 0, transparent 5px, black 6px);
-  mask-position: top left, top right, bottom left, bottom right;
-  mask-repeat: no-repeat;
-  mask-size: 50% 50%;
+button:hover, .button:hover {
+    background: var(--bg-darker-2-1);
+    box-shadow: 0 4px 8px 0 #00000033;
 }
 
-button:hover, input[type=submit]:hover, .button:hover {
-  color: #f22;
-  box-shadow: 0 4px 13px 0 #00000044;
+button.primary {
+    border: 1px solid var(--accent-2-darker);
+    background: var(--accent-2);
+    color: var(--accent-2-darkest);
+}
+
+button.primary:hover {
+    background: var(--accent-2-lighter);
 }
 
 /* Text Fields */
@@ -408,7 +412,9 @@ input[type=text], input[type=password] {
 
     font-size: 17px;
 
-    background: #fff;
+    background: var(--text-input-bg);
+    color: var(--fg);
+
     border-radius: 4px;
     border: 1px solid var(--bg-darker-2);
     box-shadow: 0 0 8px 0 #00000020;
@@ -424,28 +430,30 @@ input[type=password] {
 
 /* Forms */
 
-.field-set {
+form .field {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+form .field-set {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: auto 1fr;
     grid-auto-rows: auto;
 
-    gap: 0.5rem;
+    gap: 0.5rem 1rem;
     padding: 1rem;
 }
 
-.field-set label {
+form .field-set label {
     grid-column: 1 / 2;
+    align-self: center;
+    justify-self: end;
 }
 
-.field-set input {
+form .field-set input {
     grid-column: 2 / 3;
-}
-
-.field-set .alone {
-    grid-column: 1 / 3;
-    place-self: center;
-
-    margin-top: 1rem;
 }
 
 /* Pages */
