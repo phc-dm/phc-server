@@ -346,6 +346,10 @@ p {
     max-width: 100%;
 }
 
+p.center {
+    text-align: center;
+}
+
 /* Controls */
 
 a {
@@ -401,6 +405,11 @@ button.primary:hover {
     background: var(--accent-2-lighter);
 }
 
+button.icon {
+    padding: 0;
+    width: 2rem;
+}
+
 /* Text Fields */
 
 input[type=text], input[type=password] {
@@ -426,6 +435,32 @@ input[type=text], input[type=password] {
 
 input[type=password] {
     font-family: caption;
+}
+
+/* Compound Controls */
+
+.compound {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 4px;
+    box-shadow: 0 0 8px 0 #00000022;
+}
+
+.compound > button, .compound > .button, .compound > input {
+    box-shadow: none;
+}
+
+.compound > :not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.compound > :not(:last-child) {
+    border-right: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
 /* Forms */
@@ -531,4 +566,18 @@ form .field-set input {
 
 .page-home .main {
     padding-top: calc(100vh - 6rem);
+}
+
+.page-utenti .search {
+    margin: 2rem 0;
+}
+
+.page-utenti .search input[type=text] {
+    width: 50ch;
+    height: 2.5rem;
+}
+
+.page-utenti .search button {
+    width: 2.5rem;
+    height: 2.5rem;
 }

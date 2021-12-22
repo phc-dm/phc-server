@@ -55,3 +55,7 @@ body.dark-mode {
 .dark-mode nav .nav-logo img {
     filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.4));
 }
+
+.dark-mode input[type] {
+    background: #4b4342;
+}
