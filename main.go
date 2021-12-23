@@ -23,11 +23,10 @@ func main() {
 
 	// Static content
 	r.Handle("/public/*", http.StripPrefix("/public", http.FileServer(http.Dir("./public"))))
-	r.Handle("/blog/*", http.StripPrefix("/blog", http.FileServer(http.Dir("./blog/public"))))
 
 	// Templates & Renderer
 	renderer := NewTemplateRenderer("base.html")
-	newsArticlesRegistry := NewArticleRegistry("./news")
+	newsArticlesRegistry := NewArticleRenderer("./news")
 
 	// Routes
 	r.Get("/", func(w http.ResponseWriter, r *http.Request) {

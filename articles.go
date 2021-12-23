@@ -197,7 +197,7 @@ func (registry *ArticleRenderer) LoadAll() ([]*Article, error) {
 	return articles, nil
 }
 
-func NewArticleRegistry(rootPath string) *ArticleRenderer {
+func NewArticleRenderer(rootPath string) *ArticleRenderer {
 	return &ArticleRenderer{
 		rootPath,
 	}

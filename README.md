@@ -10,8 +10,6 @@ Per clonare il progetto usare
 $ git clone https://github.com/phc-dm/phc-server
 ```
 
-<!-- L'opzione `--recursive` serve a clonare anche il sottomodule relativo al blog del sito, si può anche omettere però non sarà disponibile la visualizzazione del blog in fase di development. -->
-
 ## Development
 
 Copiare il file `.env.dev` in `.env` per dire al server di lavorare in modalità di development e su quale indirizzo servire il sito, poi avviare il server.
