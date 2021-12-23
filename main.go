@@ -8,6 +8,7 @@ import (
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 	"github.com/phc-dm/phc-server/config"
+	"github.com/phc-dm/phc-server/templates"
 	"github.com/phc-dm/phc-server/util"
 )
 
@@ -25,7 +26,11 @@ func main() {
 	r.Handle("/public/*", http.StripPrefix("/public", http.FileServer(http.Dir("./public"))))
 
 	// Templates & Renderer
-	renderer := NewTemplateRenderer("base.html")
+	renderer := templates.NewRenderer(
+		"./views/",
+		templates.File("./views/base.html"),
+		templates.Pattern("./views/partials/*.html"),
+	)
 	newsArticlesRegistry := NewArticleRenderer("./news")
 
 	// Routes
