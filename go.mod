@@ -1,4 +1,4 @@
-module github.com/phc-dm/server-poisson
+module github.com/phc-dm/phc-server
 
 go 1.13
 

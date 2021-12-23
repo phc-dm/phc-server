@@ -6,7 +6,7 @@ import (
 	"strings"
 
 	"github.com/joho/godotenv"
-	"github.com/phc-dm/server-poisson/util"
+	"github.com/phc-dm/phc-server/util"
 )
 
 var Mode string

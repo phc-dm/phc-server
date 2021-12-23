@@ -7,17 +7,24 @@ Repo del server del nuovo sito per il PHC.
 Per clonare il progetto usare
 
 ```bash
-$ git clone --recursive https://github.com/phc-dm/server-poisson
+$ git clone https://github.com/phc-dm/phc-server
 ```
 
-L'opzione `--recursive` serve a clonare anche il sottomodule relativo al blog del sito, si può anche omettere però non sarà disponibile la visualizzazione del blog in fase di development.
+<!-- L'opzione `--recursive` serve a clonare anche il sottomodule relativo al blog del sito, si può anche omettere però non sarà disponibile la visualizzazione del blog in fase di development. -->
 
 ## Development
 
-Copiare il file `.env.dev` in `.env` per dire al server di lavorare in modalità di development e su quale indirizzo servire il sito. Per avviare il server basta fare
+Copiare il file `.env.dev` in `.env` per dire al server di lavorare in modalità di development e su quale indirizzo servire il sito, poi avviare il server.
 
+```bash shell
+$ cp .env.dev .env
+$ go run .
 ```
-go run .
+
+Un comando comodo in fase di development che usa entr è
+
+```bash shell
+$ find . -type f -name '*.go' | entr -r go run .
 ```
 
 ### Environment Variables

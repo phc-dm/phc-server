@@ -7,8 +7,8 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
-	"github.com/phc-dm/server-poisson/config"
-	"github.com/phc-dm/server-poisson/util"
+	"github.com/phc-dm/phc-server/config"
+	"github.com/phc-dm/phc-server/util"
 )
 
 func main() {
