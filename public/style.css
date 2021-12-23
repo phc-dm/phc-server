@@ -4,6 +4,8 @@
 :root {
     --bg: #eaeaea;
     --fg: #333;
+    
+    --bg-lighter: #f0f0f0;
 
     --bg-dark: hsl(220, 5%, 93%);
     --bg-darker: hsl(220, 5%, 90%);
@@ -357,10 +359,28 @@ h4 {
     font-weight: var(--font-weight-bold);
 }
 
-p, ul, ol, li {
+p, ul, ol, li, pre {
     margin: 0.5rem 0;
     width: 70ch;
     max-width: 100%;
+}
+
+ul, ol {
+    padding: 0 0 0 1.5rem;
+}
+
+pre {
+    background: var(--bg-lighter);
+    border-radius: 2px;
+    border: 1px solid #cbcbcb;
+    box-shadow: 0 2px 4px 0 #00000033;
+
+    font-size: 90%;
+}
+
+pre > code {
+    display: block;
+    margin: 0.25rem;
 }
 
 p.center {
@@ -598,3 +618,35 @@ form .field-set input {
     width: 2.5rem;
     height: 2.5rem;
 }
+
+/* Rendered Markdown */
+
+.news-content {
+    display: block;
+}
+
+.news-content h1 {
+    text-align: center;
+}
+
+.news-content .math.display {
+    margin: 1rem 0;
+}
+
+.news-content img {
+    display: block;
+    margin: 1rem auto;
+
+    background: var(--bg-dark);
+    border-radius: 4px;
+    border: 1px solid var(--bg-darker-2);
+    box-shadow: 0 2px 8px 0 #00000033;
+}
+
+/* Math */
+
+.katex-display {
+    margin: 0;
+}
+
+

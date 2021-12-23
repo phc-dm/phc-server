@@ -61,3 +61,13 @@ body.dark-mode {
 .dark-mode input[type] {
     background: #4b4342;
 }
+
+.dark-mode pre {
+    background: var(--bg-darker);
+    border: 1px solid var(--bg-darker-2);
+}
+
+/* Trick molto molto malvagio per non dover rendere il colorscheme dei blocchi di codice dinamici rispetto alla dark mode */
+.dark-mode pre > code > span {
+    filter: invert(1);
+}
