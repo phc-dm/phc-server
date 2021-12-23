@@ -4,7 +4,10 @@
 
 {{define "body"}}
 <section>
-    <h2>Notizie Importanti</h2>
+    <h2>
+        <i class="far fa-newspaper"></i>
+        Notizie Importanti
+    </h2>
     <div class="card-list">
         {{ range .Articles }}
         {{ if .Important }}

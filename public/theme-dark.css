@@ -3,6 +3,8 @@ body.dark-mode {
     --bg: #282828;
     --fg: #a6cc92;
     /* --fg: #6eac4d; */
+    /* Magari questo: */
+    /* --fg: #a3b09c; */
 
     --bg-dark: hsl(10, 10%, 20%);
     --bg-darker: hsl(10, 10%, 17%);
