@@ -19,6 +19,7 @@ func main() {
 	// Middleware
 	r.Use(middleware.Logger)
 	r.Use(middleware.Recoverer)
+	r.Use(middleware.RedirectSlashes)
 
 	// Static content
 	r.Handle("/public/*", http.StripPrefix("/public", http.FileServer(http.Dir("./public"))))
@@ -26,8 +27,7 @@ func main() {
 
 	// Templates & Renderer
 	renderer := NewTemplateRenderer("base.html")
-	articleRegistry := NewArticleRegistry()
-	articleRegistry.LoadAll()
+	newsArticlesRegistry := NewArticleRegistry("./news")
 
 	// Routes
 	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
@@ -55,7 +55,7 @@ func main() {
 	})
 
 	r.Get("/news", func(w http.ResponseWriter, r *http.Request) {
-		articles, err := articleRegistry.LoadAll()
+		articles, err := newsArticlesRegistry.LoadAll()
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
@@ -70,16 +70,23 @@ func main() {
 	})
 
 	r.Get("/news/{article}", func(w http.ResponseWriter, r *http.Request) {
-		article := chi.URLParam(r, "article")
+		articleName := chi.URLParam(r, "article")
 
-		htmlSource, err := articleRegistry.Render(article)
+		article, err := newsArticlesRegistry.Load(articleName)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+
+		html, err := article.Render()
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
 
 		if err := renderer.Render(w, "news-base.html", util.H{
-			"ContentHTML": template.HTML(htmlSource),
+			"Article":     article,
+			"ContentHTML": template.HTML(html),
 		}); err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return

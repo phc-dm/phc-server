@@ -332,6 +332,29 @@ section {
     color: var(--card-content);
 }
 
+.tags {
+    display: flex;
+    flex-direction: row;
+    gap: 0 0.5rem;
+
+    margin-top: 0.5rem;
+}
+
+.tags .tag {
+    height: 1.5rem;
+    border-radius: calc(1.5rem / 2);
+    padding: 0 calc(1.5rem / 2);
+    
+    background: var(--bg-darker-2);
+    color: var(--card-date);
+
+    font-size: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /* Typography */
 
 h1, h2, h3, h4 {
@@ -359,7 +382,7 @@ h4 {
     font-weight: var(--font-weight-bold);
 }
 
-p, ul, ol, li, pre {
+p, ul, ol, li {
     margin: 0.5rem 0;
     width: 70ch;
     max-width: 100%;
@@ -370,12 +393,17 @@ ul, ol {
 }
 
 pre {
+    margin: 0.5rem 0;
+
     background: var(--bg-lighter);
-    border-radius: 2px;
     border: 1px solid #cbcbcb;
+    border-radius: 2px;
     box-shadow: 0 2px 4px 0 #00000033;
 
     font-size: 90%;
+
+    display: flex;
+    overflow-x: auto;
 }
 
 pre > code {
@@ -629,10 +657,6 @@ form .field-set input {
     text-align: center;
 }
 
-.news-content .math.display {
-    margin: 1rem 0;
-}
-
 .news-content img {
     display: block;
     margin: 1rem auto;
@@ -643,10 +667,47 @@ form .field-set input {
     box-shadow: 0 2px 8px 0 #00000033;
 }
 
+.news-content .date {
+    font-size: 15px;
+    color: var(--card-date);
+
+    display: flex;
+    justify-content: center;
+}
+
+.news-content .tags, .news-content .date {
+    justify-content: center;
+}
+
+.news-content table {
+    margin: 1rem auto;
+}
+
 /* Math */
 
 .katex-display {
-    margin: 0;
+    margin: 1rem 0;
+    font-size: 105%;
 }
 
+/* Tables */
 
+table {
+    border-collapse: collapse;
+}
+
+table td, table th {
+    padding: 0.5rem;
+}
+
+table td:not(:first-child), table th:not(:first-child) {
+    border-left: 1px solid var(--bg-darker-3);
+}
+
+table td {
+    border-top: 1px solid var(--bg-darker-3);
+}
+
+table tbody tr:hover {
+    background: var(--bg-darker);
+}

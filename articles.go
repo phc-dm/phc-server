@@ -25,7 +25,7 @@ import (
 var md goldmark.Markdown
 
 // https://github.com/yuin/goldmark-highlighting/blob/9216f9c5aa010c549cc9fc92bb2593ab299f90d4/highlighting_test.go#L27
-func customWrapper(w util.BufWriter, c highlighting.CodeBlockContext, entering bool) {
+func customCodeBlockWrapper(w util.BufWriter, c highlighting.CodeBlockContext, entering bool) {
 	lang, ok := c.Language()
 	if entering {
 		if ok {
@@ -43,7 +43,6 @@ func customWrapper(w util.BufWriter, c highlighting.CodeBlockContext, entering b
 }
 
 func init() {
-
 	md = goldmark.New(
 		goldmark.WithExtensions(
 			extension.GFM,
@@ -52,7 +51,7 @@ func init() {
 			mathjax.NewMathJax(),
 			highlighting.NewHighlighting(
 				highlighting.WithStyle("github"),
-				highlighting.WithWrapperRenderer(customWrapper),
+				highlighting.WithWrapperRenderer(customCodeBlockWrapper),
 				highlighting.WithFormatOptions(
 					chromahtml.PreventSurroundingPre(true),
 				),
@@ -69,11 +68,10 @@ func init() {
 }
 
 type ArticleFrontMatter struct {
-	Title       string   `yaml:"title"`
-	Description string   `yaml:"description"`
-	Tags        []string `yaml:"tags,flow"`
-	PublishDate string   `yaml:"publish_date"`
-	Important   bool     `yaml:"important"`
+	Title       string `yaml:"title"`
+	Description string `yaml:"description"`
+	Tags        string `yaml:"tags"`
+	PublishDate string `yaml:"publish_date"`
 }
 
 type Article struct {
@@ -82,14 +80,44 @@ type Article struct {
 	Description string
 	Tags        []string
 	PublishDate time.Time
-	Important   bool
 
-	SourceMarkdown string
-	OutputHTML     string
+	MarkdownSource string
+	renderedHTML   string
 }
 
-type ArticleRegistry struct {
-	Articles map[string]*Article
+func (article *Article) HasTag(tag string) bool {
+	for _, t := range article.Tags {
+		if t == tag {
+			return true
+		}
+	}
+
+	return false
+}
+
+func (article *Article) Render() (string, error) {
+	if article.renderedHTML == "" {
+		var buf bytes.Buffer
+		if err := md.Convert([]byte(article.MarkdownSource), &buf); err != nil {
+			return "", err
+		}
+
+		article.renderedHTML = buf.String()
+	}
+
+	return article.renderedHTML, nil
+}
+
+type ArticleRenderer struct {
+	RootPath string
+}
+
+func trimAll(vs []string) []string {
+	r := []string{}
+	for _, v := range vs {
+		r = append(r, strings.TrimSpace(v))
+	}
+	return r
 }
 
 func removeBlanks(v []string) []string {
@@ -104,8 +132,8 @@ func removeBlanks(v []string) []string {
 	return r
 }
 
-func (ar *ArticleRegistry) LoadArticle(name string) (*Article, error) {
-	fileBytes, err := os.ReadFile(path.Join("./news/", name+".md"))
+func (registry *ArticleRenderer) Load(articlePath string) (*Article, error) {
+	fileBytes, err := os.ReadFile(path.Join(registry.RootPath, articlePath+".md"))
 	if err != nil {
 		return nil, err
 	}
@@ -128,28 +156,22 @@ func (ar *ArticleRegistry) LoadArticle(name string) (*Article, error) {
 		return nil, err
 	}
 
-	var buf bytes.Buffer
-	if err := md.Convert([]byte(markdownSource), &buf); err != nil {
-		return nil, err
-	}
+	tags := trimAll(strings.Split(frontMatter.Tags, ","))
 
 	article := &Article{
-		Id:             name,
+		Id:             articlePath,
 		Title:          frontMatter.Title,
 		Description:    frontMatter.Description,
-		Tags:           frontMatter.Tags,
+		Tags:           tags,
 		PublishDate:    publishDate,
-		Important:      frontMatter.Important,
-		SourceMarkdown: markdownSource,
-		OutputHTML:     buf.String(),
+		MarkdownSource: markdownSource,
 	}
 
-	ar.Articles[name] = article
 	return article, nil
 }
 
-func (ar *ArticleRegistry) LoadAll() ([]*Article, error) {
-	entries, err := os.ReadDir("./news")
+func (registry *ArticleRenderer) LoadAll() ([]*Article, error) {
+	entries, err := os.ReadDir(registry.RootPath)
 	if err != nil {
 		return nil, err
 	}
@@ -159,7 +181,7 @@ func (ar *ArticleRegistry) LoadAll() ([]*Article, error) {
 	for _, entry := range entries {
 		if !entry.IsDir() {
 			name := strings.TrimRight(entry.Name(), ".md")
-			article, err := ar.LoadArticle(name)
+			article, err := registry.Load(name)
 			if err != nil {
 				return nil, err
 			}
@@ -175,17 +197,8 @@ func (ar *ArticleRegistry) LoadAll() ([]*Article, error) {
 	return articles, nil
 }
 
-func NewArticleRegistry() *ArticleRegistry {
-	return &ArticleRegistry{
-		map[string]*Article{},
+func NewArticleRegistry(rootPath string) *ArticleRenderer {
+	return &ArticleRenderer{
+		rootPath,
 	}
-}
-
-func (ar *ArticleRegistry) Render(name string) (string, error) {
-	article, err := ar.LoadArticle(name)
-	if err != nil {
-		return "", err
-	}
-
-	return article.OutputHTML, nil
 }

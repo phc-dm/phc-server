@@ -4,6 +4,15 @@
 
 {{define "body"}}
 <section class="news-content">
+    <h1>{{ .Article.Title }}</h1>
+    <div class="date">
+        {{ .Article.PublishDate.Format "2006/01/02" }}
+    </div>
+    <div class="tags">
+        {{ range .Article.Tags }}
+        <span class="tag">{{ . }}</span>
+        {{ end }}
+    </div>
     {{ .ContentHTML }}
 </section>
 {{end}}

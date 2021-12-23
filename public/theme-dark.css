@@ -71,3 +71,7 @@ body.dark-mode {
 .dark-mode pre > code > span {
     filter: invert(1);
 }
+
+.dark-mode table td, .dark-mode table th {
+    border-color: var(--fg);
+}
