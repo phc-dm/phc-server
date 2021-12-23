@@ -34,29 +34,24 @@ func main() {
 	newsArticlesRegistry := NewArticleRenderer("./news")
 
 	// Routes
-	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
-		err := renderer.Render(w, "home.html", util.H{})
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
-	})
 
-	r.Get("/link", func(w http.ResponseWriter, r *http.Request) {
-		err := renderer.Render(w, "link.html", util.H{})
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
-	})
+	actuallyStaticRoutes := map[string]string{
+		"/":       "home.html",
+		"/link":   "link.html",
+		"/utenti": "utenti.html",
+		"/login":  "login.html",
+	}
 
-	r.Get("/utenti", func(w http.ResponseWriter, r *http.Request) {
-		err := renderer.Render(w, "utenti.html", util.H{})
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
-	})
+	for route, view := range actuallyStaticRoutes {
+		localView := view
+		r.Get(route, func(w http.ResponseWriter, r *http.Request) {
+			err := renderer.Render(w, localView, util.H{})
+			if err != nil {
+				http.Error(w, err.Error(), http.StatusInternalServerError)
+				return
+			}
+		})
+	}
 
 	r.Get("/news", func(w http.ResponseWriter, r *http.Request) {
 		articles, err := newsArticlesRegistry.LoadAll()
@@ -92,14 +87,6 @@ func main() {
 			"Article":     article,
 			"ContentHTML": template.HTML(html),
 		}); err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
-	})
-
-	r.Get("/login", func(w http.ResponseWriter, r *http.Request) {
-		err := renderer.Render(w, "login.html", util.H{})
-		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
