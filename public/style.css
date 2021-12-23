@@ -340,7 +340,24 @@ h1, h2, h3, h4 {
     font-weight: var(--font-weight-light);
 }
 
-p {
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.35rem;
+}
+
+h4 {
+    font-size: 1.2rem;
+    font-weight: var(--font-weight-bold);
+}
+
+p, ul, ol, li {
     margin: 0.5rem 0;
     width: 70ch;
     max-width: 100%;

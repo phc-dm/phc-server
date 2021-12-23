@@ -1,6 +1,7 @@
 package main
 
 import (
+	"html/template"
 	"log"
 	"net/http"
 
@@ -25,6 +26,8 @@ func main() {
 
 	// Templates & Renderer
 	renderer := NewTemplateRenderer("base.html")
+	articleRegistry := NewArticleRegistry()
+	articleRegistry.LoadAll()
 
 	// Routes
 	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
@@ -52,8 +55,32 @@ func main() {
 	})
 
 	r.Get("/news", func(w http.ResponseWriter, r *http.Request) {
-		err := renderer.Render(w, "news.html", util.H{})
+		articles, err := articleRegistry.LoadAll()
 		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+
+		if err := renderer.Render(w, "news.html", util.H{
+			"Articles": articles,
+		}); err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+	})
+
+	r.Get("/news/{article}", func(w http.ResponseWriter, r *http.Request) {
+		article := chi.URLParam(r, "article")
+
+		htmlSource, err := articleRegistry.Render(article)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+
+		if err := renderer.Render(w, "news-base.html", util.H{
+			"ContentHTML": template.HTML(htmlSource),
+		}); err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
