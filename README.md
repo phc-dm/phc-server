@@ -19,7 +19,7 @@ $ cp .env.dev .env
 $ go run .
 ```
 
-Un comando comodo in fase di development che usa entr è
+Un comando comodo in fase di development che usa [`entr`](https://github.com/eradman/entr) è
 
 ```bash shell
 $ find . -type f -name '*.go' | entr -r go run .
