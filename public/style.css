@@ -143,7 +143,7 @@ nav .nav-main {
     border: 1px solid var(--bg-darker-2);
     box-shadow: var(--shadow-1);
 
-    z-index: 0;
+    z-index: 1;
 }
 
 nav .nav-item.filler {
@@ -633,16 +633,16 @@ form .field-set input {
     padding-top: calc(100vh - 6rem);
 }
 
-.page-utenti .search {
+.search {
     margin: 2rem 0;
 }
 
-.page-utenti .search input[type=text] {
+.search input[type=text] {
     width: 50ch;
     height: 2.5rem;
 }
 
-.page-utenti .search button {
+.search button {
     width: 2.5rem;
     height: 2.5rem;
 }

@@ -53,6 +53,23 @@ func main() {
 		})
 	}
 
+	r.Get("/appunti", func(w http.ResponseWriter, r *http.Request) {
+		searchQuery := ""
+
+		keys, present := r.URL.Query()["q"]
+		if present {
+			searchQuery = keys[0]
+		}
+
+		err := renderer.Render(w, "appunti.html", util.H{
+			"Query": searchQuery,
+		})
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+	})
+
 	r.Get("/news", func(w http.ResponseWriter, r *http.Request) {
 		articles, err := newsArticlesRegistry.LoadAll()
 		if err != nil {

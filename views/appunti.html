@@ -1,0 +1,43 @@
+{{template "base" .}}
+
+{{define "title"}}Appunti &bull; PHC{{end}}
+
+{{define "body"}}
+<section>
+    <h2>
+        <i class="fas fa-book"></i>
+        Raccolta degli Appunti
+    </h2>
+    <p>
+        Questa è la raccolta degli appunti presenti su Poisson. Cerca il titolo della dispensa, il nome e cognome o l'username dell'autore oppure scrivi il nome del corso rispetto a cui filtrare. Altrimenti in cima compariranno gli appunti più "gettonati".
+    </p>
+    <p>
+        Puoi aggiungere le tue dispense dalla <a href="/appunti/condivisi">pagina personale di condivisione</a>.
+    </p>
+    <div class="search">
+        <div class="compound">
+            <input type="text" id="search-field" placeholder="Prova con &quot;Geometria 1&quot; o &quot;Mezzedimi&quot;..." autocomplete="off" {{ if .Query }}value="{{ .Query }}"{{ end }}>
+            <button class="icon">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </div>
+    <div class="appunti-list">
+        <code>TODO: Lista work in progress</code>
+    </div>
+
+    <script>
+        // Aggiorna automaticamente la barra dell'URL con la query corrente
+        document.querySelector('#search-field').addEventListener('input', function() {
+            const q = this.value.trim();
+            history.replaceState({}, 'Appunti', 
+                q.length === 0 ? '/appunti' : '/appunti?q=' + encodeURIComponent(q)
+            );
+        });
+    </script>
+</section>
+<script>
+
+</script>
+
+{{end}}
