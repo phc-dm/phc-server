@@ -7,6 +7,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
+	"github.com/phc-dm/phc-server/articles"
 	"github.com/phc-dm/phc-server/config"
 	"github.com/phc-dm/phc-server/templates"
 	"github.com/phc-dm/phc-server/util"
@@ -31,7 +32,7 @@ func main() {
 		templates.File("./views/base.html"),
 		templates.Pattern("./views/partials/*.html"),
 	)
-	newsArticlesRegistry := NewArticleRenderer("./news")
+	newsArticlesRegistry := articles.NewRegistry("./news")
 
 	// Routes
 
@@ -71,7 +72,7 @@ func main() {
 	})
 
 	r.Get("/news", func(w http.ResponseWriter, r *http.Request) {
-		articles, err := newsArticlesRegistry.LoadAll()
+		articles, err := newsArticlesRegistry.GetArticles()
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
@@ -86,9 +87,9 @@ func main() {
 	})
 
 	r.Get("/news/{article}", func(w http.ResponseWriter, r *http.Request) {
-		articleName := chi.URLParam(r, "article")
+		articleID := chi.URLParam(r, "article")
 
-		article, err := newsArticlesRegistry.Load(articleName)
+		article, err := newsArticlesRegistry.GetArticle(articleID)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
